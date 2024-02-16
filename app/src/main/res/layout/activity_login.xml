@@ -50,7 +50,7 @@
             android:padding="9dp"
             android:hint="Gmail"
             android:textColorHint="#808080"
-            android:textColor="@color/black"
+            android:textColor="@color/main_color"
             android:layout_margin="10dp"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="50dp"
@@ -97,19 +97,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="90dp"
                 android:textStyle="bold"
-                android:text="Forgot Password?">
+                android:text="Forgot Password?"
+                android:clickable="true"
+                android:onClick="ForgetPass">
 
             </TextView>
 
         </LinearLayout>
 
         <Button
+            android:id="@+id/SignUp"
             android:layout_width="330dp"
             android:layout_height="59dp"
             android:layout_gravity="center"
             android:layout_marginTop="25dp"
             android:backgroundTint="@color/main_color"
-            android:onClick="main"
+            android:onClick="signIn"
             android:text="Sign In"
             android:textStyle="bold"></Button>
 
