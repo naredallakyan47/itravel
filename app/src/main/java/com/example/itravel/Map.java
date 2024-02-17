@@ -1,6 +1,9 @@
 package com.example.itravel;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -25,6 +28,11 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback{
         public void onMapReady(GoogleMap googleMap) {
             mMap = googleMap;
 
+        }
+
+        public void Home(View view){
+            Intent intent = new Intent(this , Main.class);
+            startActivity(intent);
 
         }
     }

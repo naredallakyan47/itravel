@@ -23,7 +23,9 @@
             android:layout_height="30dp"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            app:srcCompat="@drawable/homeoff" />
+            app:srcCompat="@drawable/homeoff"
+            android:clickable="true"
+            android:onClick="Home"/>
 
         <ImageView
             android:layout_width="0dp"
