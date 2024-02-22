@@ -15,6 +15,7 @@
         android:textSize="18dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
+        android:textColor="@color/black"
         ></TextView>
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,6 +41,7 @@
             android:layout_marginTop="20dp"
             android:textStyle="bold"
             android:layout_marginLeft="5dp"
+            android:textColor="@color/black"
             ></TextView>
         <ImageView
 
@@ -90,11 +92,13 @@
         >
 
         <TextView
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Categories"
             android:textStyle="bold"
             android:layout_marginLeft="16dp"
+            android:textColor="@color/black"
             ></TextView>
 
 
@@ -103,6 +107,7 @@
             android:layout_height="wrap_content"
             android:text="See all"
             android:layout_marginLeft="240dp"
+            android:textColor="@color/black"
             ></TextView>
 
     </LinearLayout>
@@ -190,6 +195,7 @@
         android:text="Top Trips"
         android:layout_marginTop="250dp"
         android:layout_marginLeft="16dp"
+        android:textColor="@color/black"
         android:textStyle="bold"></TextView>
 
 
@@ -227,6 +233,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Haghpat"
+
+            android:textColor="@color/black"
             android:layout_marginLeft="16dp"
             android:textStyle="bold">
 
@@ -235,6 +243,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Lori"
+            android:textColor="@color/black"
             android:layout_marginLeft="16dp"
             android:textStyle="bold">
 
@@ -264,13 +273,15 @@
                 android:layout_height="wrap_content"
                 android:text="Sanahin"
                 android:layout_marginLeft="16dp"
-                android:textStyle="bold">
+                android:textStyle="bold"
+                android:textColor="@color/black">
 
             </TextView>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Lori"
+                android:textColor="@color/black"
                 android:layout_marginLeft="16dp"
                 android:textStyle="bold">
 
@@ -295,6 +306,7 @@
                 app:srcCompat="@drawable/goshavank" />
 
             <TextView
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Goshavank"
@@ -303,6 +315,7 @@
 
             </TextView>
             <TextView
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tavush"
@@ -330,6 +343,7 @@
 
 
             <TextView
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Yell Extreme"
@@ -338,6 +352,7 @@
 
             </TextView>
             <TextView
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tavush"
@@ -365,6 +380,7 @@
 
 
             <TextView
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sevan"
@@ -378,7 +394,7 @@
                 android:text="Gegharkunik"
                 android:layout_marginLeft="16dp"
                 android:textStyle="bold">
-
+                android:textColor="@color/black"
             </TextView>
         </LinearLayout>
 
@@ -400,6 +416,7 @@
 
 
             <TextView
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Gyumri"
@@ -408,6 +425,7 @@
 
             </TextView>
             <TextView
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Shirak"
@@ -465,7 +483,9 @@
             android:layout_height="30dp"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            app:srcCompat="@drawable/profile" />
+            app:srcCompat="@drawable/profile"
+            android:clickable="true"
+            android:onClick="Profile"/>
     </LinearLayout>
 
 

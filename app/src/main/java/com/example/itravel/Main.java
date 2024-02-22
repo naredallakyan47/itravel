@@ -24,4 +24,8 @@ public class Main extends AppCompatActivity {
         Intent intent = new Intent(this, Map.class);
         startActivity(intent);
     }
+    public void Profile(View v) {
+        Intent intent = new Intent(this, Profile.class);
+        startActivity(intent);
+    }
 }

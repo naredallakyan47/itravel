@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class Register extends AppCompatActivity {
 
@@ -32,16 +33,15 @@ public class Register extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-
         usernameEditText = findViewById(R.id.username);
         emailEditText = findViewById(R.id.gmail);
         passwordEditText = findViewById(R.id.password);
     }
 
     public void signUp(View v) {
+        final String username = usernameEditText.getText().toString();
         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
-
 
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -50,9 +50,25 @@ public class Register extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(username)
+                                    .build();
+                            if (user != null) {
+                                user.updateProfile(profileUpdates)
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                    Log.d(TAG, "User profile updated.");
+                                                }
+                                            }
+                                        });
+                            }
+
+
                             sendEmailVerification(user);
                         } else {
-                            // If sign in fails, display a message to the user.
+
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(Register.this, "Authentication failed: " + task.getException().getMessage(),
                                     Toast.LENGTH_SHORT).show();
@@ -60,6 +76,7 @@ public class Register extends AppCompatActivity {
                     }
                 });
     }
+
 
     private void sendEmailVerification(FirebaseUser user) {
         user.sendEmailVerification()

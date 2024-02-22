@@ -4,4 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="main_color">#008FA0</color>
     <color name="bg_color">#F5F5F5</color>
+    <color name="button">#CCCCCC</color>
+    <color name="progressColor">#008FA0</color>
 </resources>

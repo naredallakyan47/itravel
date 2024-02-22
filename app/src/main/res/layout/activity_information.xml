@@ -5,6 +5,7 @@
     android:background="@color/bg_color"
     >
     <TextView
+        android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Haghpat"
@@ -18,7 +19,8 @@
     </TextView>
 
     <ImageView
-        android:layout_marginTop="96dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="55dp"
         android:layout_width="350dp"
         android:layout_height="350dp"
         app:srcCompat="@drawable/haxpat"

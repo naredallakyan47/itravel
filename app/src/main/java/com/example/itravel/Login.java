@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -32,6 +33,16 @@ public class Login extends AppCompatActivity {
 
         emailEditText = findViewById(R.id.gmail);
         passwordEditText = findViewById(R.id.password);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
+
+        if (isLoggedIn) {
+            startActivity(new Intent(this, Main.class));
+            finish();
+        } else {
+
+        }
     }
 
     public void signIn(View v) {
@@ -43,6 +54,11 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putBoolean("isLoggedIn", true);
+                            editor.apply();
+
                             Intent intent = new Intent(Login.this, Main.class);
                             startActivity(intent);
                         } else {
@@ -54,6 +70,7 @@ public class Login extends AppCompatActivity {
                 });
     }
 
+
     public void Register(View v) {
         Intent intent = new Intent(this, Register.class);
         startActivity(intent);
@@ -63,4 +80,9 @@ public class Login extends AppCompatActivity {
         Intent intent = new Intent(this, ForgetPass.class);
         startActivity(intent);
     }
+
+
+
+
+
 }

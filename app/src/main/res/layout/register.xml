@@ -48,6 +48,7 @@
             app:srcCompat="@drawable/logo" />
 
         <TextView
+            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Username"
@@ -77,8 +78,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Gmail"
+            android:text="E-mail"
             android:textStyle="bold"
+            android:textColor="@color/black"
             android:layout_marginLeft="15dp"
             android:textSize="20dp"
             >
@@ -88,7 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="9dp"
-            android:hint="Gmail"
+            android:hint="E-mail"
             android:textColorHint="#808080"
             android:textColor="@color/main_color"
             android:layout_margin="10dp"
@@ -97,6 +99,7 @@
             android:inputType="textEmailAddress"
             android:background="@drawable/edittext_border" />
         <TextView
+            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Password"
@@ -135,13 +138,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <CheckBox
-                android:id="@+id/checkBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:checked="false"
-                android:text="Remember me" />
+
 
 
         </LinearLayout>
