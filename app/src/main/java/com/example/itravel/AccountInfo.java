@@ -35,5 +35,6 @@ public class AccountInfo extends AppCompatActivity {
                 emailTextView.setText(email);
             }
         }
+
     }
 }

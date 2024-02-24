@@ -50,6 +50,7 @@ public class Language extends AppCompatActivity {
                 editor.apply();
             }
         });
+
     }
 
     // Метод для обработки нажатия на кнопку "Save"

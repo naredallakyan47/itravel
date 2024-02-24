@@ -40,6 +40,7 @@ public class Profile extends AppCompatActivity {
             startActivity(loginIntent);
             finish();
         }
+
     }
 
     public void settings(View view){

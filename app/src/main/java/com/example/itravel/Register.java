@@ -36,6 +36,7 @@ public class Register extends AppCompatActivity {
         usernameEditText = findViewById(R.id.username);
         emailEditText = findViewById(R.id.gmail);
         passwordEditText = findViewById(R.id.password);
+
     }
 
     public void signUp(View v) {

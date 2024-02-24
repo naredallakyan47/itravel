@@ -10,7 +10,6 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -27,14 +26,7 @@ public class Main extends AppCompatActivity {
 
         locationTextView = findViewById(R.id.location_map);
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-            return;
-        }
-
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
@@ -54,7 +46,13 @@ public class Main extends AppCompatActivity {
             public void onProviderDisabled(String provider) {}
         };
 
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+        } else {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+        }
+
     }
 
     @Override
@@ -79,6 +77,7 @@ public class Main extends AppCompatActivity {
     }
 
 
+
     public void onImageClick(View v) {
 
         Intent intent = new Intent(this, Information.class);
@@ -94,5 +93,6 @@ public class Main extends AppCompatActivity {
         startActivity(intent);
     }
 }
+
 
 
