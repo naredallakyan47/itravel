@@ -383,8 +383,9 @@
                 android:layout_height="wrap_content"
                 android:text="Gegharkunik"
                 android:layout_marginLeft="16dp"
-                android:textStyle="bold">
-                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textColor="@color/black">
+
             </TextView>
         </LinearLayout>
 
