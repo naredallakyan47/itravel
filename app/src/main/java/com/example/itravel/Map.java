@@ -13,8 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
-import com.example.itravel.Main;
-import com.example.itravel.Profile;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -25,10 +23,12 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class Map extends FragmentActivity implements OnMapReadyCallback, LocationListener {
 
+    private static final int ACCURACY_THRESHOLD_METERS = 20;
+    private static final float ZOOM_LEVEL = 17.0f;
+
     private GoogleMap mMap;
     private Circle userCircle;
     private LocationManager locationManager;
-    private boolean isFirstLocationUpdate = true; // Флаг для отслеживания первого обновления местоположения
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,28 +61,32 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Locatio
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        LatLng initialLocation = new LatLng(40.7401, 44.8622);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(initialLocation, 15));
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
-        CircleOptions circleOptions = new CircleOptions()
-                .center(initialLocation)
-                .radius(20)
-                .strokeWidth(2)
-                .strokeColor(Color.BLUE)
-                .fillColor(Color.parseColor("#500084d3"));
-
-        userCircle = mMap.addCircle(circleOptions);
+            return;
+        }
+        mMap.setMyLocationEnabled(true);
     }
 
     @Override
     public void onLocationChanged(@NonNull Location location) {
         LatLng currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
-        userCircle.setCenter(currentLocation);
-        if (isFirstLocationUpdate) {
-            mMap.animateCamera(CameraUpdateFactory.newLatLng(currentLocation));
-            isFirstLocationUpdate = false;
+        if (location.hasAccuracy() && location.getAccuracy() <= ACCURACY_THRESHOLD_METERS) {
+            if (userCircle == null) {
+                CircleOptions circleOptions = new CircleOptions()
+                        .center(currentLocation)
+                        .radius(location.getAccuracy())
+                        .strokeWidth(1)
+                        .strokeColor(Color.BLUE)
+                        .fillColor(Color.parseColor("#500084d3"));
+                userCircle = mMap.addCircle(circleOptions);
+            } else {
+                userCircle.remove();
+            }
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, ZOOM_LEVEL));
         }
     }
+
 
     @Override
     public void onProviderDisabled(@NonNull String provider) {
@@ -96,26 +100,27 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Locatio
     public void onStatusChanged(String provider, int status, Bundle extras) {
     }
 
-    public void Home(View view) {
-        Intent intent = new Intent(this, Main.class);
-        startActivity(intent);
-    }
-
-    public void Profile(View v) {
-        Intent intent = new Intent(this, Profile.class);
-        startActivity(intent);
-    }
-
     public void returnToMyLocation(View view) {
         if (mMap != null) {
             if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 return;
             }
+            LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
             Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             if (lastKnownLocation != null) {
                 LatLng currentLocation = new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
                 mMap.animateCamera(CameraUpdateFactory.newLatLng(currentLocation));
             }
         }
+    }
+
+    public void Home(View view) {
+        Intent intent = new Intent(this, Main.class);
+        startActivity(intent);
+    }
+
+    public void Profile(View view) {
+        Intent intent = new Intent(this, Profile.class);
+        startActivity(intent);
     }
 }

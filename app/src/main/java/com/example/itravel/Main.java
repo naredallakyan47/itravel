@@ -112,10 +112,7 @@ public class Main extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void Message(View v) {
-        Intent intent = new Intent(this, Message.class);
-        startActivity(intent);
-    }
+
 
     private String getLocationName(double latitude, double longitude) {
         try {

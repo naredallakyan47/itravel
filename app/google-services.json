@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1082304252570",
+    "project_id": "itravel-9bff4",
+    "storage_bucket": "itravel-9bff4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1082304252570:android:9de1d6eb5089907861ad23",
+        "android_client_info": {
+          "package_name": "com.example.itravel"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzAmkGk0eFgjxoWzBo9MT3mLCKa3XvsXU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
