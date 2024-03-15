@@ -2,35 +2,50 @@ package com.example.itravel;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.widget.Toast;
+import androidx.annotation.NonNull;
+import com.google.android.gms.location.LocationRequest;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.Circle;
-import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
-public class Map extends FragmentActivity implements OnMapReadyCallback, LocationListener {
+import android.widget.SearchView;
 
-    private static final int ACCURACY_THRESHOLD_METERS = 20;
-    private static final float ZOOM_LEVEL = 17.0f;
+import java.util.ArrayList;
+import java.util.List;
 
+public class Map extends AppCompatActivity implements OnMapReadyCallback {
+
+    private Marker yerevanMarker;
     private GoogleMap mMap;
-    private Circle userCircle;
-    private LocationManager locationManager;
+    private FusedLocationProviderClient fusedLocationClient;
+    private LocationCallback locationCallback;
+    private Marker currentMarker;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
+    private SearchView searchView;
 
-    @Override
+    private List<TouristPlace> touristPlaces;
+
+    private List<Marker> allMarkers = new ArrayList<>();
+
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
@@ -38,78 +53,149 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Locatio
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-        } else {
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
-        }
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
+        locationCallback = new LocationCallback() {
+            @Override
+            public void onLocationResult(LocationResult locationResult) {
+                super.onLocationResult(locationResult);
+                if (locationResult != null) {
+                    for (android.location.Location location : locationResult.getLocations()) {
+                        updateLocation(location);
+                    }
+                }
+            }
+        };
+
+        touristPlaces = new ArrayList<>();
+
+        addTouristPlaces();
+
+
+        searchView = findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                handleSearch(query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == 1 && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
-                    && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+
+    private void addTouristPlaces() {
+        touristPlaces.add(new TouristPlace("Yerevan", new LatLng(40.1772, 44.5035), "Capital of Armenia"));
+        touristPlaces.add(new TouristPlace("Gyumri", new LatLng(40.7894, 43.8478), "City with rich cultural heritage"));
+        touristPlaces.add(new TouristPlace("Vanadzor", new LatLng(40.8128, 44.4880), "Third largest city in Armenia"));
+        touristPlaces.add(new TouristPlace("Dilijan", new LatLng(40.7408, 44.8631), "Town in Tavush province known for its spa resorts and nature"));
+        touristPlaces.add(new TouristPlace("Sevan", new LatLng(40.5519, 44.9566), "Medieval monastery complex"));
+        touristPlaces.add(new TouristPlace("Tatev", new LatLng(39.3824, 46.2502), ""));
+        touristPlaces.add(new TouristPlace("Garni", new LatLng(40.1258, 44.7869), ""));
+        touristPlaces.add(new TouristPlace("Geghard", new LatLng(40.1561, 44.8150), ""));
+    }
+
+
+
+
+
+
+    private void handleSearch(String query) {
+        boolean placeFound = false;
+        for (TouristPlace place : touristPlaces) {
+            if (place.getName().equalsIgnoreCase(query)) {
+                LatLng location = place.getLatLng();
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 12));
+                placeFound = true;
+                break;
             }
+        }
+        if (!placeFound) {
+            for (Marker marker : allMarkers) {
+                if (marker.getTitle().equalsIgnoreCase(query)) {
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(marker.getPosition(), 12));
+                    placeFound = true;
+                    break;
+                }
+            }
+
+        }
+        if (!placeFound) {
+            Toast.makeText(this, "Place not found", Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
             return;
         }
+
         mMap.setMyLocationEnabled(true);
-    }
 
-    @Override
-    public void onLocationChanged(@NonNull Location location) {
-        LatLng currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
-        if (location.hasAccuracy() && location.getAccuracy() <= ACCURACY_THRESHOLD_METERS) {
-            if (userCircle == null) {
-                CircleOptions circleOptions = new CircleOptions()
-                        .center(currentLocation)
-                        .radius(location.getAccuracy())
-                        .strokeWidth(1)
-                        .strokeColor(Color.BLUE)
-                        .fillColor(Color.parseColor("#500084d3"));
-                userCircle = mMap.addCircle(circleOptions);
-            } else {
-                userCircle.remove();
-            }
-            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, ZOOM_LEVEL));
+        startLocationUpdates();
+
+        for (TouristPlace place : touristPlaces) {
+            Marker marker = mMap.addMarker(new MarkerOptions().position(place.getLatLng()).title(place.getName()));
+            allMarkers.add(marker);
         }
-    }
 
 
-    @Override
-    public void onProviderDisabled(@NonNull String provider) {
-    }
 
-    @Override
-    public void onProviderEnabled(@NonNull String provider) {
-    }
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
 
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-    }
+                for (TouristPlace place : touristPlaces) {
+                    if (marker.getPosition().equals(place.getLatLng())) {
 
-    public void returnToMyLocation(View view) {
-        if (mMap != null) {
-            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                return;
+                        showPlaceFragment(place.getName());
+                        return true;
+                    }
+                }
+                return false;
             }
-            LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-            Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            if (lastKnownLocation != null) {
-                LatLng currentLocation = new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
-                mMap.animateCamera(CameraUpdateFactory.newLatLng(currentLocation));
+        });
+    }
+
+
+    private void showPlaceFragment(String placeName) {
+        stopLocationUpdates();
+        PlaceFragment fragment = new PlaceFragment(placeName);
+        fragment.show(getSupportFragmentManager(), "place_dialog");
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        startLocationUpdates();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopLocationUpdates();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                        && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    mMap.setMyLocationEnabled(true);
+                    startLocationUpdates();
+                }
             }
         }
     }
@@ -122,5 +208,61 @@ public class Map extends FragmentActivity implements OnMapReadyCallback, Locatio
     public void Profile(View view) {
         Intent intent = new Intent(this, Profile.class);
         startActivity(intent);
+    }
+
+    private void startLocationUpdates() {
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            fusedLocationClient.requestLocationUpdates(getLocationRequest(), locationCallback, null);
+        }
+    }
+
+    private void stopLocationUpdates() {
+        fusedLocationClient.removeLocationUpdates(locationCallback);
+    }
+
+    private LocationRequest getLocationRequest() {
+        LocationRequest locationRequest = LocationRequest.create();
+        locationRequest.setFastestInterval(5000);
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        return locationRequest;
+    }
+
+    private void updateLocation(android.location.Location location) {
+        LatLng currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
+        if (currentMarker == null) {
+            currentMarker = mMap.addMarker(new MarkerOptions().position(currentLocation).title("Current Location"));
+        } else {
+            currentMarker.setPosition(currentLocation);
+        }
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 15));
+    }
+
+    private void showPlaceInfo(String info) {
+        Toast.makeText(this, info, Toast.LENGTH_SHORT).show();
+    }
+
+    private static class TouristPlace {
+        private String name;
+        private LatLng latLng;
+        private String description;
+
+        public TouristPlace(String name, LatLng latLng, String description) {
+            this.name = name;
+            this.latLng = latLng;
+            this.description = description;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public LatLng getLatLng() {
+            return latLng;
+        }
+
+        public String getDescription() {
+            return description;
+        }
     }
 }

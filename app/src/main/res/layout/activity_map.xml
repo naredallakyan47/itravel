@@ -11,20 +11,15 @@
         android:layout_height="match_parent"
         tools:context=".Map"/>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_location"
-        android:layout_width="wrap_content"
-        android:clickable="true"
-        android:onClick="returnToMyLocation"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="600dp"
-        android:src="@drawable/ic_my_location"
-        android:text="+"
-        app:backgroundTint="@color/main_color"
-        app:elevation="6dp"
-        app:pressedTranslationZ="12dp" />
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -75,24 +70,21 @@
             android:onClick="Profile"/>
     </LinearLayout>
 
-    <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextView"
-        android:layout_width="350dp"
-        android:layout_height="70dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:textStyle="bold"
-        android:padding="5dp"
-        android:backgroundTint="@color/white"
-        android:layout_marginBottom="5dp"
+    <FrameLayout
+        android:id="@+id/autocomplete_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_margin="16dp"
+        android:layout_alignParentTop="true"/>
 
-        android:background="@drawable/edittext_border"
-        android:hint="Search"
-        android:imeOptions="actionSearch"
-        android:singleLine="true"
-        android:textColor="@color/main_color"
-        android:textSize="20dp" />
+    <SearchView
+        android:padding="10dp"
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="Search for tourist places"
+        app:iconifiedByDefault="false" />
 
 </RelativeLayout>
+
