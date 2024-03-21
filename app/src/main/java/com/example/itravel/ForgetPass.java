@@ -40,30 +40,5 @@ public class ForgetPass extends AppCompatActivity {
                 });
     }
 
-    public void resetPassword(View view) {
-        EditText codeEditText = findViewById(R.id.code);
-        EditText passwordEditText = findViewById(R.id.password);
 
-        String code = codeEditText.getText().toString().trim();
-        String newPassword = passwordEditText.getText().toString().trim();
-
-        try {
-            mAuth.checkActionCode(code);
-            mAuth.getCurrentUser().updatePassword(newPassword)
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Toast.makeText(ForgetPass.this, "Password successfully updated.", Toast.LENGTH_SHORT).show();
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(ForgetPass.this, "Failed to update password: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
-        } catch (Exception e) {
-            Toast.makeText(this, "Invalid verification code.", Toast.LENGTH_SHORT).show();
-        }
-    }
 }

@@ -461,7 +461,7 @@
             android:layout_weight="1"
             android:layout_margin="10dp"
             android:clickable="true"
-            android:onClick="Message"
+            android:onClick="Chat"
             app:srcCompat="@drawable/massage" />
 
         <ImageView

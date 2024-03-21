@@ -112,6 +112,11 @@ public class Main extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void Chat(View v) {
+        Intent intent = new Intent(this, ChatActivity.class);
+        startActivity(intent);
+    }
+
 
 
     private String getLocationName(double latitude, double longitude) {

@@ -2,6 +2,7 @@ package com.example.itravel;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 
@@ -37,6 +38,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
     private FusedLocationProviderClient fusedLocationClient;
     private LocationCallback locationCallback;
     private Marker currentMarker;
+    private LatLng myLocation;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private SearchView searchView;
 
@@ -213,9 +215,23 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
     private void startLocationUpdates() {
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+
+            locationCallback = new LocationCallback() {
+                @Override
+                public void onLocationResult(LocationResult locationResult) {
+                    if (locationResult == null) {
+                        return;
+                    }
+                    for (Location location : locationResult.getLocations()) {
+                        myLocation = new LatLng(location.getLatitude(), location.getLongitude());
+                    }
+                }
+            };
+
             fusedLocationClient.requestLocationUpdates(getLocationRequest(), locationCallback, null);
         }
     }
+
 
     private void stopLocationUpdates() {
         fusedLocationClient.removeLocationUpdates(locationCallback);
