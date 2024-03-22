@@ -33,12 +33,16 @@
 
 
     <ScrollView
+        android:id="@+id/scroll"
         android:layout_marginTop="450dp"
-        android:layout_width="match_parent"
-        android:layout_height="400dp">
+        android:layout_width="360dp"
+        android:layout_height="225dp">
 
     <LinearLayout
+        android:background="@drawable/rounded_corners"
+        android:backgroundTint="@color/main_color"
         android:layout_width="match_parent"
+        android:layout_marginLeft="25dp"
         android:layout_height="wrap_content">
 
         <TextView
@@ -46,12 +50,44 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="36dp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="25dp"  />
 
     </LinearLayout>
     </ScrollView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/scroll">
+
+        <Button
+            android:id="@+id/play_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Play Audio"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:backgroundTint="@color/main_color"
+            android:onClick="playText"/>
+
+
+        <Button
+            android:id="@+id/pause_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stop"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:backgroundTint="@color/main_color"
+            android:onClick="pauseText"/>
+
+    </LinearLayout>
+
+
+
 
 
 </RelativeLayout>

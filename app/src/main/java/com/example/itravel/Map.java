@@ -96,9 +96,10 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
         touristPlaces.add(new TouristPlace("Vanadzor", new LatLng(40.8128, 44.4880), "Third largest city in Armenia"));
         touristPlaces.add(new TouristPlace("Dilijan", new LatLng(40.7408, 44.8631), "Town in Tavush province known for its spa resorts and nature"));
         touristPlaces.add(new TouristPlace("Sevan", new LatLng(40.5519, 44.9566), "Medieval monastery complex"));
-        touristPlaces.add(new TouristPlace("Tatev", new LatLng(39.3824, 46.2502), ""));
-        touristPlaces.add(new TouristPlace("Garni", new LatLng(40.1258, 44.7869), ""));
-        touristPlaces.add(new TouristPlace("Geghard", new LatLng(40.1561, 44.8150), ""));
+        touristPlaces.add(new TouristPlace("Tatev", new LatLng(39.375665164, 46.237332384), ""));
+        touristPlaces.add(new TouristPlace("Garni", new LatLng(40.11833286 , 44.720497118), ""));
+        touristPlaces.add(new TouristPlace("Geghard", new LatLng(40.155332712, 44.791330168), ""));
+        touristPlaces.add(new TouristPlace("Haghpat", new LatLng(41.090332972, 44.706163842), ""));
     }
 
 
@@ -209,6 +210,11 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
 
     public void Profile(View view) {
         Intent intent = new Intent(this, Profile.class);
+        startActivity(intent);
+    }
+
+    public void Info(View view) {
+        Intent intent = new Intent(this, Information.class);
         startActivity(intent);
     }
 

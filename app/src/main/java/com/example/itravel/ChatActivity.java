@@ -70,10 +70,6 @@ public class ChatActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void message(View view) {
-        Intent intent = new Intent(this, Profile.class);
-        startActivity(intent);
-    }
 }
 
 
