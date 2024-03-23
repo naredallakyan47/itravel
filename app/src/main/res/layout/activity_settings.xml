@@ -53,32 +53,7 @@
         </LinearLayout>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:clickable="true"
-            android:onClick="Lang"
-            android:layout_marginTop="10dp"
-            >
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/sett"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"/>
 
-
-            <TextView
-                android:textColor="@color/black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Language"
-                android:textStyle="bold"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"/>
-
-        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/log_out"
