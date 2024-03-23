@@ -6,4 +6,5 @@
     <color name="bg_color">#F5F5F5</color>
     <color name="button">#CCCCCC</color>
     <color name="progressColor">#008FA0</color>
+    <color name="red">#FF001E</color>
 </resources>

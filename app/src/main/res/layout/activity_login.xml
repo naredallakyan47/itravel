@@ -81,7 +81,6 @@
             android:inputType="textPassword"
             android:background="@drawable/edittext_border"/>
         <LinearLayout
-
             android:id="@+id/checkbox"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -100,14 +99,26 @@
 
             </TextView>
 
-        </LinearLayout>
 
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/red"
+            android:clickable="true"
+            android:onClick="ForgetPass">
+
+        </TextView>
         <Button
             android:id="@+id/SignUp"
             android:layout_width="330dp"
             android:layout_height="59dp"
             android:layout_gravity="center"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="30dp"
             android:backgroundTint="@color/main_color"
             android:onClick="signIn"
             android:text="Sign In"

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,6 +24,8 @@ public class Login extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
 
     EditText emailEditText;
+
+    TextView error;
     EditText passwordEditText;
 
     @Override
@@ -34,6 +37,7 @@ public class Login extends AppCompatActivity {
 
         emailEditText = findViewById(R.id.gmail);
         passwordEditText = findViewById(R.id.password);
+        error = findViewById(R.id.error);
 
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
@@ -66,8 +70,9 @@ public class Login extends AppCompatActivity {
                             startActivity(intent);
                         } else {
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(Login.this, "Authentication failed: " + task.getException().getMessage(),
-                                    Toast.LENGTH_SHORT).show();
+
+
+                            error.setText("Authentication failed: " + task.getException().getMessage());
                         }
                     }
                 });

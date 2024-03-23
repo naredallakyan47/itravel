@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,9 +23,13 @@ public class Register extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private static final String TAG = "RegisterActivity";
 
+    TextView error;
+
     EditText usernameEditText;
     EditText emailEditText;
     EditText passwordEditText;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +41,7 @@ public class Register extends AppCompatActivity {
         usernameEditText = findViewById(R.id.username);
         emailEditText = findViewById(R.id.gmail);
         passwordEditText = findViewById(R.id.password);
+        error = findViewById(R.id.error);
 
     }
 
@@ -71,8 +77,7 @@ public class Register extends AppCompatActivity {
                         } else {
 
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(Register.this, "Authentication failed: " + task.getException().getMessage(),
-                                    Toast.LENGTH_SHORT).show();
+                            error.setText("Authentication failed: " + task.getException().getMessage());
                         }
                     }
                 });
