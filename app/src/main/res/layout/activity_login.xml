@@ -35,7 +35,7 @@
             app:srcCompat="@drawable/logo" />
 
         <TextView
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="E-mail"
@@ -118,7 +118,7 @@
             android:layout_width="330dp"
             android:layout_height="59dp"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:backgroundTint="@color/main_color"
             android:onClick="signIn"
             android:text="Sign In"
@@ -126,7 +126,6 @@
 
 
         <TextView
-            android:layout_marginTop="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Don’t have an Account?"
@@ -141,6 +140,15 @@
             android:backgroundTint="@color/main_color"
             android:onClick="Register"
             android:text="Create Account"
+            android:textStyle="bold"></Button>
+
+        <Button
+            android:layout_width="330dp"
+            android:layout_height="59dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/main_color"
+            android:onClick="Guest"
+            android:text="Guest Mode"
             android:textStyle="bold"></Button>
 
 

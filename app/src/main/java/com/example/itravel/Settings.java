@@ -15,6 +15,11 @@ public class Settings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            Login.GuestMode = intent.getBooleanExtra("GuestMode", false);
+        }
     }
 
     public void Account(View view){
@@ -33,12 +38,12 @@ public class Settings extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean("isLoggedIn", false);
         editor.apply();
+
         Intent intent = new Intent(this, Login.class);
+        intent.putExtra("GuestMode", Login.GuestMode);
         startActivity(intent);
         finish();
     }
-
-
 
 
 

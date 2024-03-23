@@ -109,8 +109,10 @@ public class Main extends AppCompatActivity {
 
     public void Profile(View v) {
         Intent intent = new Intent(this, Profile.class);
+        intent.putExtra("GuestMode", Login.GuestMode);
         startActivity(intent);
     }
+
 
     public void Chat(View v) {
         Intent intent = new Intent(this, ChatActivity.class);

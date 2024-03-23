@@ -43,6 +43,11 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        Intent intent = getIntent();
+        if (intent != null) {
+            Login.GuestMode = intent.getBooleanExtra("GuestMode", false);
+        }
+
         ImageView profileImageView = findViewById(R.id.profile);
         Bitmap savedImage = loadImageFromInternalStorage();
         if (savedImage != null) {
@@ -50,27 +55,29 @@ public class Profile extends AppCompatActivity {
         }
 
         mAuth = FirebaseAuth.getInstance();
-
         currentUser = mAuth.getCurrentUser();
-
         TextView usernameTextView = findViewById(R.id.username);
 
-        if (currentUser != null) {
-
-            String username = currentUser.getDisplayName();
-
-            if (username != null && !username.isEmpty()) {
-                usernameTextView.setText(username);
-            } else {
-                usernameTextView.setText("Username not available");
-            }
+        if (Login.GuestMode) {
+            usernameTextView.setText("Guest Mode");
         } else {
-
-            Intent loginIntent = new Intent(this, Login.class);
-            startActivity(loginIntent);
-            finish();
+            if (currentUser != null) {
+                String username = currentUser.getDisplayName();
+                if (username != null && !username.isEmpty()) {
+                    usernameTextView.setText(username);
+                } else {
+                    // Если имя пользователя не установлено, вы можете отобразить сообщение об ошибке или что-то другое
+                    usernameTextView.setText("Username not available");
+                }
+            } else {
+                // Если пользователь не вошел, например, приложение запущено впервые, или нет сети, напишите здесь логику для входа пользователя.
+            }
         }
     }
+
+
+
+
 
 
     public void chooseImage(View view) {
@@ -155,8 +162,11 @@ public class Profile extends AppCompatActivity {
 
     public void settings(View view){
         Intent intent = new Intent(this, Settings.class);
+        intent.putExtra("GuestMode", Login.GuestMode);
         startActivity(intent);
     }
+
+
 
     public void map(View v) {
         Intent intent = new Intent(this, Map.class);
