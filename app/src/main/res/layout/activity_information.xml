@@ -19,52 +19,20 @@
     </TextView>
 
 
-    <HorizontalScrollView
-        android:id="@+id/img"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="55dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:textColor="@color/black"
-                app:srcCompat="@drawable/haxpat" />
 
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:textColor="@color/black"
-                app:srcCompat="@drawable/haghpat3"
-                />
-
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:textColor="@color/black"
-                app:srcCompat="@drawable/haghpat4" />
-        </LinearLayout>
-
-
-
-
-    </HorizontalScrollView>
 
     <LinearLayout
         android:id="@+id/scroll"
-        android:layout_below="@+id/img"
+        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <ScrollView
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:layout_width="250dp"
-            android:layout_height="225dp">
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="360dp"
+            android:layout_height="225dp"
+            android:layout_gravity="center">
 
             <LinearLayout
                 android:background="@drawable/rounded_corners"
@@ -82,16 +50,19 @@
                     android:textStyle="bold"
                     android:textSize="25dp"  />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/bagratuni">
 
-                </ImageView>
+
             </LinearLayout>
         </ScrollView>
 
 
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
 
     </LinearLayout>
 
@@ -101,7 +72,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:layout_below="@+id/scroll">
 
@@ -116,17 +87,103 @@
             android:onClick="playText"/>
 
 
+
         <Button
-            android:id="@+id/pause_button"
+            android:id="@+id/pauseButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Stop"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             android:backgroundTint="@color/main_color"
+            android:text="Pause"
             android:onClick="pauseText"/>
 
+
+
     </LinearLayout>
+
+
+    <HorizontalScrollView
+        android:id="@+id/img"
+        android:layout_below="@+id/scroll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="100dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:textColor="@color/black"
+                app:srcCompat="@drawable/haxpat" />
+
+            <ImageView
+                android:layout_width="180dp"
+                android:layout_height="150dp"
+                android:textColor="@color/black"
+                app:srcCompat="@drawable/haghpat3"
+                />
+
+            <ImageView
+                android:layout_width="160dp"
+                android:layout_height="180dp"
+                android:textColor="@color/black"
+                app:srcCompat="@drawable/haghpat4"
+                />
+
+
+            <ImageView
+                android:layout_width="180dp"
+                android:layout_height="150dp"
+                android:textColor="@color/black"
+                app:srcCompat="@drawable/axpat"
+                />
+
+            <ImageView
+                android:layout_width="180dp"
+                android:layout_height="150dp"
+                android:textColor="@color/black"
+                app:srcCompat="@drawable/haghpat3"
+                />
+
+
+            <ImageView
+                android:layout_width="180dp"
+                android:layout_height="150dp"
+                android:textColor="@color/black"
+                app:srcCompat="@drawable/axpat5"
+                />
+
+            <ImageView
+                android:layout_width="180dp"
+                android:layout_height="150dp"
+                android:textColor="@color/black"
+                app:srcCompat="@drawable/axpat2"
+                />
+
+            <ImageView
+                android:layout_width="180dp"
+                android:layout_height="150dp"
+                android:textColor="@color/black"
+                app:srcCompat="@drawable/axpat9"
+
+                />
+
+            <ImageView
+                android:layout_width="180dp"
+                android:layout_height="150dp"
+                android:textColor="@color/black"
+                app:srcCompat="@drawable/axpatx"
+                />
+        </LinearLayout>
+
+
+
+
+    </HorizontalScrollView>
 
 
 

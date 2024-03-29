@@ -1,11 +1,12 @@
 package com.example.itravel;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
+import android.speech.tts.UtteranceProgressListener;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,6 +18,9 @@ public class Information extends AppCompatActivity implements TextToSpeech.OnIni
     private TextView textView;
     private List<String> listSentences;
     private int currentIndex = 0;
+    private int currentPlayIndex = 0;
+    private int currentPlayPosition = 0;
+    private boolean isPaused = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,31 @@ public class Information extends AppCompatActivity implements TextToSpeech.OnIni
         textView.setText(textFromDatabase);
 
         textToSpeech = new TextToSpeech(this, this);
+        textToSpeech.setOnUtteranceProgressListener(new UtteranceProgressListener() {
+            @Override
+            public void onStart(String utteranceId) {
+
+            }
+
+            @Override
+            public void onDone(String utteranceId) {
+
+                speakNextSentence();
+            }
+
+            @Override
+            public void onError(String utteranceId) {
+
+            }
+
+            @Override
+            public void onStop(String utteranceId, boolean interrupted) {
+
+                if (utteranceId.equals(String.valueOf(currentIndex))) {
+                    currentPlayPosition = currentIndex;
+                }
+            }
+        });
     }
 
     @Override
@@ -54,14 +83,38 @@ public class Information extends AppCompatActivity implements TextToSpeech.OnIni
     }
 
     public void playText(View view) {
-        currentIndex = 0;
-        textToSpeech.speak(listSentences.get(currentIndex), TextToSpeech.QUEUE_FLUSH, null);
-    }
-
-    public void pauseText(View view) {
-        if (textToSpeech != null) {
-            textToSpeech.stop();
+        if (isPaused) {
+            isPaused = false;
+            speakNextSentence(currentPlayIndex, currentPlayPosition);
+        } else {
+            currentIndex = 0;
+            speakNextSentence();
         }
     }
 
+    private void speakNextSentence() {
+        if (currentIndex < listSentences.size()) {
+            String sentence = listSentences.get(currentIndex);
+            textToSpeech.speak(sentence, TextToSpeech.QUEUE_ADD, null, String.valueOf(currentIndex));
+            currentIndex++;
+        }
+    }
+
+    private void speakNextSentence(int startIndex, int startPosition) {
+        if (startIndex < listSentences.size()) {
+            for (int i = startIndex; i < listSentences.size(); i++) {
+                String sentence = listSentences.get(i);
+                textToSpeech.speak(sentence, TextToSpeech.QUEUE_ADD, null, String.valueOf(i));
+            }
+            currentIndex = startIndex;
+        }
+    }
+
+    public void pauseText(View view) {
+        if (textToSpeech != null && textToSpeech.isSpeaking()) {
+            textToSpeech.stop();
+            isPaused = true;
+            currentPlayIndex = currentIndex;
+        }
+    }
 }

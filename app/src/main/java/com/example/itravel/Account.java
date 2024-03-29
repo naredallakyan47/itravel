@@ -1,10 +1,10 @@
 package com.example.itravel;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Account extends AppCompatActivity {
 
@@ -20,7 +20,7 @@ public class Account extends AppCompatActivity {
         startActivity(intent);
     }
     public void Del(View view){
-        Intent intent = new Intent(this, Dell.class);
+        Intent intent = new Intent(this, Splash_screen_del.class);
         startActivity(intent);
     }
 }

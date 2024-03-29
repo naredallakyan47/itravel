@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/first"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="Please enter the following text to delete the account.
+"/>
+
+    <TextView
+        android:layout_below="@+id/first"
+        android:id="@+id/text"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="'I am deleting my account'"/>
+
+
+    <EditText
+        android:id="@+id/usernameEditText"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/text"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter your username" />
+
+
+
+    <Button
+        android:id="@+id/confirmButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/main_color"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/usernameEditText"
+        android:text="Confirm"
+        android:onClick="confirmDeletion" />
+
+</RelativeLayout>
