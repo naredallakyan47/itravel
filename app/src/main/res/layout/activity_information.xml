@@ -31,7 +31,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
             android:layout_width="360dp"
-            android:layout_height="225dp"
+            android:layout_height="300dp"
             android:layout_gravity="center">
 
             <LinearLayout
@@ -77,26 +77,15 @@
         android:layout_below="@+id/scroll">
 
         <Button
-            android:id="@+id/play_button"
+            android:id="@+id/play_pause_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Play Audio"
+            android:text="Play"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             android:backgroundTint="@color/main_color"
-            android:onClick="playText"/>
+            android:onClick="togglePlayPause"/>
 
-
-
-        <Button
-            android:id="@+id/pauseButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:backgroundTint="@color/main_color"
-            android:text="Pause"
-            android:onClick="pauseText"/>
 
 
 

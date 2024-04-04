@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
 
@@ -65,20 +66,26 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-                            SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putBoolean("isLoggedIn", true);
-                            editor.apply();
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            if (user != null && user.isEmailVerified()) {
+                                SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putBoolean("isLoggedIn", true);
+                                editor.apply();
 
-                            Intent intent = new Intent(Login.this, Main.class);
-                            startActivity(intent);
+                                Intent intent = new Intent(Login.this, Main.class);
+                                startActivity(intent);
+                            } else if (user != null && !user.isEmailVerified()) {
+                                Toast.makeText(Login.this, "Please verify your email before logging in", Toast.LENGTH_SHORT).show();
+                            }
                         } else {
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            error.setText("Authentication failed: " + task.getException().getMessage());
+                            Toast.makeText(Login.this, "User not found or authentication failed", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
     }
+
 
     public void Register(View v) {
         Intent intent = new Intent(this, Register.class);

@@ -5,17 +5,16 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
-
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
+import android.widget.SearchView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
-import com.google.android.gms.location.LocationRequest;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -25,8 +24,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
-import android.widget.SearchView;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -151,15 +149,11 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
             allMarkers.add(marker);
         }
 
-
-
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-
                 for (TouristPlace place : touristPlaces) {
                     if (marker.getPosition().equals(place.getLatLng())) {
-
                         showPlaceFragment(place.getName());
                         return true;
                     }
@@ -167,7 +161,25 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
                 return false;
             }
         });
+
+        zoomToMyLocation();
     }
+    private void zoomToMyLocation() {
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Handle the case where permissions are not granted
+            return;
+        }
+        fusedLocationClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                if (location != null) {
+                    LatLng myLatLng = new LatLng(location.getLatitude(), location.getLongitude());
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLatLng, 15)); // Зумируем камеру на текущее местоположение
+                }
+            }
+        });
+    }
+
 
 
     private void showPlaceFragment(String placeName) {
