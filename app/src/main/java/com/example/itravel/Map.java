@@ -98,6 +98,11 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
         touristPlaces.add(new TouristPlace("Garni", new LatLng(40.11833286 , 44.720497118), ""));
         touristPlaces.add(new TouristPlace("Geghard", new LatLng(40.155332712, 44.791330168), ""));
         touristPlaces.add(new TouristPlace("Haghpat", new LatLng(41.090332972, 44.706163842), ""));
+        touristPlaces.add(new TouristPlace("Eiffel Tower, France, Paris", new LatLng(48.858093, 2.294694), ""));
+        touristPlaces.add(new TouristPlace("Musée du Louvre, Paris", new LatLng(48.860294, 2.338629), ""));
+        touristPlaces.add(new TouristPlace("Big Ben, London", new LatLng(51.510357, -0.116773), ""));
+        touristPlaces.add(new TouristPlace("Colosseum, Italy", new LatLng(41.890251, 12.492373), ""));
+        touristPlaces.add(new TouristPlace("Pisa Tower, Italy", new LatLng(43.720663784, 10.389831774), ""));
     }
 
 

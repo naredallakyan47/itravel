@@ -1,7 +1,12 @@
 package com.example.itravel;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,16 +18,26 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.io.InputStream;
 
 public class PlaceFragment extends DialogFragment {
 
-    private String placeName;
+    private static final String TAG = "PlaceFragment";
+    public static String placeName;
+
     private boolean isLiked = false;
-    private FirebaseHelper firebaseHelper;
 
     public PlaceFragment(String placeName) {
         this.placeName = placeName;
-        firebaseHelper = new FirebaseHelper();
     }
 
     @Nullable
@@ -33,6 +48,8 @@ public class PlaceFragment extends DialogFragment {
         textView.setText(placeName);
 
         Button infoButton = view.findViewById(R.id.info_button);
+        ImageView likeImage = view.findViewById(R.id.like_image);
+        ImageView imageView = view.findViewById(R.id.image);
 
         infoButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,26 +58,36 @@ public class PlaceFragment extends DialogFragment {
             }
         });
 
-
-        ImageView likeImage = view.findViewById(R.id.like_image);
-
         likeImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isLiked) {
-
-                    likeImage.setImageResource(R.drawable.like_off);
-                    isLiked = false;
-                } else {
-                    likeImage.setImageResource(R.drawable.like_on);
-                    isLiked = true;
-                }
-
-                firebaseHelper.toggleLike(placeName, isLiked);
+                isLiked = !isLiked;
+                likeImage.setImageResource(isLiked ? R.drawable.like_on : R.drawable.like_off);
             }
         });
 
+        DatabaseReference placeRef = FirebaseDatabase.getInstance().getReference("Places").child(placeName).child("Image");
+        placeRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    String imageUrl = dataSnapshot.getValue(String.class);
+                    // Используйте ссылку на изображение для загрузки изображения
+                    StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(imageUrl);
+                    storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            new DownloadImageTask(imageView).execute(uri.toString());
+                        }
+                    }).addOnFailureListener(e -> Log.e(TAG, "Error downloading image", e));
+                }
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e(TAG, "Error reading data", databaseError.toException());
+            }
+        });
         return view;
     }
 
@@ -68,5 +95,32 @@ public class PlaceFragment extends DialogFragment {
         Intent intent = new Intent(getActivity(), Information.class);
         intent.putExtra("placeName", placeName);
         startActivity(intent);
+    }
+
+    static class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+        private ImageView imageView;
+
+        public DownloadImageTask(ImageView imageView) {
+            this.imageView = imageView;
+        }
+
+        @Override
+        protected Bitmap doInBackground(String... urls) {
+            String imageUrl = urls[0];
+            try {
+                InputStream inputStream = new java.net.URL(imageUrl).openStream();
+                return BitmapFactory.decodeStream(inputStream);
+            } catch (Exception e) {
+                Log.e(TAG, "Error downloading image", e);
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap result) {
+            if (result != null) {
+                imageView.setImageBitmap(result);
+            }
+        }
     }
 }
