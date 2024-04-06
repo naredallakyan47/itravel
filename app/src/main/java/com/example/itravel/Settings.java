@@ -26,6 +26,25 @@ public class Settings extends AppCompatActivity {
         Intent intent = new Intent(this, Account.class);
         startActivity(intent);
     }
+    public void Profile(View view){
+        Intent intent = new Intent(this, Profile.class);
+        startActivity(intent);
+    }
+
+
+    public void Home(View view){
+        Intent intent = new Intent(this, Main.class);
+        startActivity(intent);
+    }
+
+    public void map(View view){
+        Intent intent = new Intent(this, Map.class);
+        startActivity(intent);
+    }
+    public void Chat(View view){
+        Intent intent = new Intent(this, ChatActivity.class);
+        startActivity(intent);
+    }
 
     public void Lang(View view){
         Intent intent = new Intent(this, Language.class);

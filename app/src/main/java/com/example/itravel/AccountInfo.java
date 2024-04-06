@@ -1,6 +1,8 @@
 package com.example.itravel;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -36,5 +38,25 @@ public class AccountInfo extends AppCompatActivity {
             }
         }
 
+    }
+
+    public void Profile(View view){
+        Intent intent = new Intent(this, Profile.class);
+        startActivity(intent);
+    }
+
+
+    public void Home(View view){
+        Intent intent = new Intent(this, Main.class);
+        startActivity(intent);
+    }
+
+    public void map(View view){
+        Intent intent = new Intent(this, Map.class);
+        startActivity(intent);
+    }
+    public void Chat(View view){
+        Intent intent = new Intent(this, ChatActivity.class);
+        startActivity(intent);
     }
 }

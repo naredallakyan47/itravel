@@ -89,6 +89,12 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
 
 
     private void addTouristPlaces() {
+        touristPlaces.add(new TouristPlace("Venice, Italy", new LatLng(45.438759, 12.327145), ""));
+        touristPlaces.add(new TouristPlace("Statue of Liberty, NY, USA", new LatLng(40.689247, -74.044502), ""));
+        touristPlaces.add(new TouristPlace("CHRIST THE REDEEMER (STATUE), BRAZIL", new LatLng(-22.950996196, -43.206499174), ""));
+        touristPlaces.add(new TouristPlace("Banff National Park, Alberta, Canada", new LatLng(51.496845, -115.928055), ""));
+        touristPlaces.add(new TouristPlace("Machu Picchu, Peru", new LatLng(-13.163068, -72.545128), ""));
+
         touristPlaces.add(new TouristPlace("Yerevan", new LatLng(40.1772, 44.5035), "Capital of Armenia"));
         touristPlaces.add(new TouristPlace("Gyumri", new LatLng(40.7894, 43.8478), "City with rich cultural heritage"));
         touristPlaces.add(new TouristPlace("Vanadzor", new LatLng(40.8128, 44.4880), "Third largest city in Armenia"));
@@ -103,6 +109,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
         touristPlaces.add(new TouristPlace("Big Ben, London", new LatLng(51.510357, -0.116773), ""));
         touristPlaces.add(new TouristPlace("Colosseum, Italy", new LatLng(41.890251, 12.492373), ""));
         touristPlaces.add(new TouristPlace("Pisa Tower, Italy", new LatLng(43.720663784, 10.389831774), ""));
+
     }
 
 
