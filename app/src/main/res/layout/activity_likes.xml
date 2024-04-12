@@ -21,6 +21,7 @@
         android:layout_width="360dp"
         android:layout_height="630dp"
         android:layout_marginTop="80dp"
+
         android:orientation="vertical"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
@@ -32,6 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:textColor="@color/black"
             android:layout_marginBottom="10dp"
             android:divider="@null"
             android:dividerHeight="0dp"

@@ -17,6 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ITravel"
         tools:targetApi="31">
+
         <activity
             android:name=".Likes"
             android:exported="false" />
@@ -35,12 +36,7 @@
         <activity
             android:name=".Login"
             android:exported="false" />
-        <activity
-            android:name=".massage_chat"
-            android:exported="false" />
-        <activity
-            android:name=".ChatActivity"
-            android:exported="false" />
+
         <activity
             android:name=".Dell"
             android:exported="false" />

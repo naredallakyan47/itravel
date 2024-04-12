@@ -41,10 +41,6 @@ public class Settings extends AppCompatActivity {
         Intent intent = new Intent(this, Map.class);
         startActivity(intent);
     }
-    public void Chat(View view){
-        Intent intent = new Intent(this, ChatActivity.class);
-        startActivity(intent);
-    }
 
     public void Lang(View view){
         Intent intent = new Intent(this, Language.class);

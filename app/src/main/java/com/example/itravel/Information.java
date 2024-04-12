@@ -41,6 +41,10 @@ public class Information extends AppCompatActivity implements TextToSpeech.OnIni
     private boolean isPlaying = false;
     private DatabaseReference mDatabase;
     private ImageView imageView;
+    private ImageView imageView2;
+    private ImageView imageView3;
+    private ImageView imageView4;
+    private ImageView imageView5;
     private StorageReference storageRef;
 
     @Override
@@ -52,6 +56,10 @@ public class Information extends AppCompatActivity implements TextToSpeech.OnIni
         textView = findViewById(R.id.textView);
         Name = findViewById(R.id.name);
         imageView = findViewById(R.id.image);
+        imageView2 = findViewById(R.id.image2);
+        imageView3 = findViewById(R.id.image3);
+        imageView4 = findViewById(R.id.image4);
+        imageView5 = findViewById(R.id.image5);
 
         textToSpeech = new TextToSpeech(this, this);
         textToSpeech.setOnUtteranceProgressListener(new UtteranceProgressListener() {
@@ -87,6 +95,7 @@ public class Information extends AppCompatActivity implements TextToSpeech.OnIni
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                int imageViewIndex = 0; // Индекс текущего ImageView
                 for (DataSnapshot placeSnapshot : dataSnapshot.getChildren()) {
                     String placeName = placeSnapshot.getKey();
                     String placeDescription = placeSnapshot.child("Desc").getValue(String.class);
@@ -94,14 +103,35 @@ public class Information extends AppCompatActivity implements TextToSpeech.OnIni
                         textView.setText(placeDescription);
                         listSentences = Arrays.asList(placeDescription.split("\\."));
 
-                        String imageUrl = placeSnapshot.child("Image").getValue(String.class);
-                        StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(imageUrl);
-                        storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-                                new PlaceFragment.DownloadImageTask(imageView).execute(uri.toString());
-                            }
-                        }).addOnFailureListener(e -> Log.e(TAG, "Error downloading image", e));
+                        // Получаем ссылки на изображения и загружаем их в соответствующие ImageView
+                        for (DataSnapshot imageSnapshot : placeSnapshot.child("Images").getChildren()) {
+                            String imageUrl = imageSnapshot.getValue(String.class);
+                            StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(imageUrl);
+                            final int currentImageViewIndex = imageViewIndex;
+                            storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    switch (currentImageViewIndex) {
+                                        case 0:
+                                            new PlaceFragment.DownloadImageTask(imageView).execute(uri.toString());
+                                            break;
+                                        case 1:
+                                            new PlaceFragment.DownloadImageTask(imageView2).execute(uri.toString());
+                                            break;
+                                        case 2:
+                                            new PlaceFragment.DownloadImageTask(imageView3).execute(uri.toString());
+                                            break;
+                                        case 3:
+                                            new PlaceFragment.DownloadImageTask(imageView4).execute(uri.toString());
+                                            break;
+                                        case 4:
+                                            new PlaceFragment.DownloadImageTask(imageView5).execute(uri.toString());
+                                            break;
+                                    }
+                                }
+                            }).addOnFailureListener(e -> Log.e(TAG, "Error downloading image", e));
+                            imageViewIndex++;
+                        }
                     }
                 }
             }
@@ -111,6 +141,7 @@ public class Information extends AppCompatActivity implements TextToSpeech.OnIni
 
             }
         });
+
     }
 
     @Override

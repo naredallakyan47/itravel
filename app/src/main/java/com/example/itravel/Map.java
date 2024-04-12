@@ -2,8 +2,12 @@ package com.example.itravel;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -26,13 +30,18 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Map extends AppCompatActivity implements OnMapReadyCallback {
 
+
+
     private Marker yerevanMarker;
     private GoogleMap mMap;
+
+    private static final String API_KEY = "AIzaSyDPVxuL0NsZ4G0hKAKuOdHXrOz3k5MM8cQ";
     private FusedLocationProviderClient fusedLocationClient;
     private LocationCallback locationCallback;
     private Marker currentMarker;
@@ -43,12 +52,51 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
     private List<TouristPlace> touristPlaces;
 
     private List<Marker> allMarkers = new ArrayList<>();
+    private class GeocodingTask extends AsyncTask<String, Void, LatLng> {
 
+        @Override
+        protected LatLng doInBackground(String... strings) {
+            String locationName = strings[0];
+            Geocoder geocoder = new Geocoder(Map.this);
+            try {
+                List<Address> addresses = geocoder.getFromLocationName(locationName, 1);
+                if (addresses != null && !addresses.isEmpty()) {
+                    Address address = addresses.get(0);
+                    return new LatLng(address.getLatitude(), address.getLongitude());
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(LatLng latLng) {
+            super.onPostExecute(latLng);
+            if (latLng != null) {
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+            } else {
+                Log.e("GeocodingTask", "Failed to find coordinates");
+                Toast.makeText(Map.this, "Failed to find location", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+
+
+
+
+    private void searchLocation(String address) {
+        GeocodingTask geocodingTask = new GeocodingTask();
+        geocodingTask.execute(address);
+    }
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+
+
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -76,9 +124,10 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                handleSearch(query);
+                searchLocation(query);
                 return true;
             }
+
 
             @Override
             public boolean onQueryTextChange(String newText) {
@@ -117,30 +166,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
 
 
 
-    private void handleSearch(String query) {
-        boolean placeFound = false;
-        for (TouristPlace place : touristPlaces) {
-            if (place.getName().equalsIgnoreCase(query)) {
-                LatLng location = place.getLatLng();
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 12));
-                placeFound = true;
-                break;
-            }
-        }
-        if (!placeFound) {
-            for (Marker marker : allMarkers) {
-                if (marker.getTitle().equalsIgnoreCase(query)) {
-                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(marker.getPosition(), 12));
-                    placeFound = true;
-                    break;
-                }
-            }
 
-        }
-        if (!placeFound) {
-            Toast.makeText(this, "Place not found", Toast.LENGTH_SHORT).show();
-        }
-    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
