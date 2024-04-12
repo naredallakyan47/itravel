@@ -19,6 +19,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,11 +35,26 @@ public class PlaceFragment extends DialogFragment {
 
     private static final String TAG = "PlaceFragment";
     public static String placeName;
+    private String username;
 
     private boolean isLiked = false;
 
     public PlaceFragment(String placeName) {
         this.placeName = placeName;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        // Получаем текущего пользователя из Firebase Authentication
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        // Если пользователь аутентифицирован, получаем его имя
+        if (currentUser != null) {
+            username = currentUser.getDisplayName();
+        }
     }
 
     @Nullable
@@ -63,6 +80,13 @@ public class PlaceFragment extends DialogFragment {
             public void onClick(View v) {
                 isLiked = !isLiked;
                 likeImage.setImageResource(isLiked ? R.drawable.like_on : R.drawable.like_off);
+                DatabaseReference likesRef = FirebaseDatabase.getInstance().getReference("Likes").child(username);
+
+                if (isLiked) {
+                    likesRef.child(placeName).setValue(true);
+                } else {
+                    likesRef.child(placeName).removeValue();
+                }
             }
         });
 
@@ -72,7 +96,6 @@ public class PlaceFragment extends DialogFragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     String imageUrl = dataSnapshot.getValue(String.class);
-                    // Используйте ссылку на изображение для загрузки изображения
                     StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(imageUrl);
                     storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override

@@ -172,7 +172,10 @@ public class Profile extends AppCompatActivity {
         Intent intent = new Intent(this, Map.class);
         startActivity(intent);
     }
-
+    public void like(View v) {
+        Intent intent = new Intent(this, Likes.class);
+        startActivity(intent);
+    }
     public void home(View v) {
         Intent intent = new Intent(this, Main.class);
         startActivity(intent);

@@ -1,31 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    tools:context=".Likes"
+    android:background="@color/main_color">
 
-    <fragment
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".Map"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Favorites"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:layout_margin="10dp"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="360dp"
+        android:layout_height="630dp"
+        android:layout_marginTop="80dp"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:background="@drawable/rounded_corners">
 
 
-    <FrameLayout
-        android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:background="@drawable/rounded_corners"
+            android:padding="10dp"/>
 
-
-
+    </LinearLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="730dp"
+        android:layout_marginTop="720dp"
         android:background="@color/white">
 
         <ImageView
@@ -33,24 +53,26 @@
             android:layout_height="30dp"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            app:srcCompat="@drawable/homeoff"
             android:clickable="true"
-            android:onClick="Home"/>
+            android:onClick="home"
+            app:srcCompat="@drawable/home" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            app:srcCompat="@drawable/map_on"
-            android:clickable="true" />
-
+            app:srcCompat="@drawable/map"
+            android:clickable="true"
+            android:onClick="map"/>
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:layout_weight="1"
             android:layout_margin="10dp"
+            android:clickable="true"
+            android:onClick="Chat"
             app:srcCompat="@drawable/massage" />
 
         <ImageView
@@ -58,8 +80,6 @@
             android:layout_height="30dp"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            android:clickable="true"
-            android:onClick="like"
             app:srcCompat="@drawable/likes" />
 
         <ImageView
@@ -72,21 +92,9 @@
             android:onClick="Profile"/>
     </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/autocomplete_fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_margin="16dp"
-        android:layout_alignParentTop="true"/>
 
-    <SearchView
-        android:padding="10dp"
-        android:id="@+id/searchView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:hint="Search for tourist places"
-        app:iconifiedByDefault="false" />
+
+
+
 
 </RelativeLayout>
-

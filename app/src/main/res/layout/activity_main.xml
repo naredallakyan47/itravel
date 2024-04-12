@@ -470,7 +470,9 @@
             android:layout_height="30dp"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            app:srcCompat="@drawable/likes" />
+            app:srcCompat="@drawable/likes"
+            android:clickable="true"
+            android:onClick="like"/>
 
         <ImageView
             android:layout_width="0dp"

@@ -50,13 +50,14 @@ public class AccountInfo extends AppCompatActivity {
         Intent intent = new Intent(this, Main.class);
         startActivity(intent);
     }
+    public void like(View v) {
+        Intent intent = new Intent(this, Likes.class);
+        startActivity(intent);
+    }
 
     public void map(View view){
         Intent intent = new Intent(this, Map.class);
         startActivity(intent);
     }
-    public void Chat(View view){
-        Intent intent = new Intent(this, ChatActivity.class);
-        startActivity(intent);
-    }
+
 }

@@ -99,6 +99,8 @@
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:layout_weight="1"
+            android:clickable="true"
+            android:onClick="like"
             android:layout_margin="10dp"
             app:srcCompat="@drawable/likes" />
 

@@ -114,8 +114,10 @@ public class Main extends AppCompatActivity {
     }
 
 
-    public void Chat(View v) {
-        Intent intent = new Intent(this, ChatActivity.class);
+
+
+    public void like(View v) {
+        Intent intent = new Intent(this, Likes.class);
         startActivity(intent);
     }
 

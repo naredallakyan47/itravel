@@ -18,6 +18,9 @@
         android:theme="@style/Theme.ITravel"
         tools:targetApi="31">
         <activity
+            android:name=".Likes"
+            android:exported="false" />
+        <activity
             android:name=".Splash_screen_del"
             android:exported="false" />
         <activity
@@ -31,7 +34,7 @@
         </activity>
         <activity
             android:name=".Login"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".massage_chat"
             android:exported="false" />

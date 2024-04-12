@@ -23,7 +23,10 @@ public class Account extends AppCompatActivity {
         Intent intent = new Intent(this, Splash_screen_del.class);
         startActivity(intent);
     }
-
+    public void like(View v) {
+        Intent intent = new Intent(this, Likes.class);
+        startActivity(intent);
+    }
 
     public void Profile(View view){
         Intent intent = new Intent(this, Profile.class);
@@ -40,8 +43,5 @@ public class Account extends AppCompatActivity {
         Intent intent = new Intent(this, Map.class);
         startActivity(intent);
     }
-    public void Chat(View view){
-        Intent intent = new Intent(this, ChatActivity.class);
-        startActivity(intent);
-    }
+
 }

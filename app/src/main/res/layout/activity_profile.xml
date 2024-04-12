@@ -89,6 +89,8 @@ android:background="@color/bg_color">
         android:layout_height="30dp"
         android:layout_weight="1"
         android:layout_margin="10dp"
+        android:clickable="true"
+        android:onClick="like"
         app:srcCompat="@drawable/likes" />
 
     <ImageView

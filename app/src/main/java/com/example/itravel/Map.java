@@ -242,6 +242,11 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
         startActivity(intent);
     }
 
+    public void like(View v) {
+        Intent intent = new Intent(this, Likes.class);
+        startActivity(intent);
+    }
+
     private void startLocationUpdates() {
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
