@@ -113,6 +113,11 @@ public class Main extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void More(View v) {
+        Intent intent = new Intent(this, Top_places.class);
+        startActivity(intent);
+    }
+
 
 
 

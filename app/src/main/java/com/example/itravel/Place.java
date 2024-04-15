@@ -13,6 +13,8 @@ public class Place {
         this.imageUrl = imageUrl;
     }
 
+
+
     public String getName() {
         return name;
     }
