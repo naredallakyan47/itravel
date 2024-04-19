@@ -10,19 +10,25 @@
         android:background="@android:color/darker_gray"
         android:gravity="center">
 
-        <TextView
-            android:textColor="@color/black"
-            android:id="@+id/place_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_margin="10dp"
-            android:textStyle="bold"
-            android:maxLines="2"
-            android:layout_marginBottom="16dp" />
+
+
+            <TextView
+                android:textColor="@color/black"
+                android:id="@+id/place_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                android:maxLines="2"
+                android:layout_marginBottom="16dp" />
+
+
         <LinearLayout
+            android:id="@+id/img"
             android:layout_width="290dp"
             android:layout_height="220dp"
+            android:orientation="vertical"
             android:layout_marginTop="60dp"
             android:layout_marginLeft="10dp">
             <ImageView
@@ -33,12 +39,20 @@
                 android:layout_height="match_parent"
                 >
             </ImageView>
+
+
         </LinearLayout>
 
 
-
-
-
+        <ImageView
+            android:id="@+id/like_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/img"
+            android:layout_marginLeft="230dp"
+            android:layout_marginTop="285dp"
+            android:clickable="true"
+            android:src="@drawable/like_off" />
 
         <Button
             android:layout_marginTop="330dp"
@@ -47,20 +61,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="More Info"
-            android:layout_below="@+id/place_name"
+            android:layout_below="@+id/like_image"
             android:backgroundTint="@color/main_color"
             android:onClick="info"/>
 
-        <ImageView
-            android:id="@+id/like_image"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/like_off"
-            android:clickable="true"
-            android:layout_below="@+id/info_button"
-            android:layout_marginTop="330dp"
-            android:layout_marginLeft="10dp"
-            />
+
 
     </FrameLayout>
 

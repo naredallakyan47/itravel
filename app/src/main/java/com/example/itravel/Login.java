@@ -1,7 +1,5 @@
 package com.example.itravel;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,7 +7,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -76,11 +76,11 @@ public class Login extends AppCompatActivity {
                                 Intent intent = new Intent(Login.this, Main.class);
                                 startActivity(intent);
                             } else if (user != null && !user.isEmailVerified()) {
-                                Toast.makeText(Login.this, "Please verify your email before logging in", Toast.LENGTH_SHORT).show();
+                                error.setText("Please verify your email before logging in");
                             }
                         } else {
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(Login.this, "User not found or authentication failed", Toast.LENGTH_SHORT).show();
+                            error.setText("Authentication failed: " + task.getException().getMessage());
                         }
                     }
                 });

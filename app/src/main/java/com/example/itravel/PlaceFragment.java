@@ -47,11 +47,9 @@ public class PlaceFragment extends DialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Получаем текущего пользователя из Firebase Authentication
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
-        // Если пользователь аутентифицирован, получаем его имя
         if (currentUser != null) {
             username = currentUser.getDisplayName();
         }
@@ -80,13 +78,30 @@ public class PlaceFragment extends DialogFragment {
             public void onClick(View v) {
                 isLiked = !isLiked;
                 likeImage.setImageResource(isLiked ? R.drawable.like_on : R.drawable.like_off);
-                DatabaseReference likesRef = FirebaseDatabase.getInstance().getReference("Likes").child(username);
+                DatabaseReference likesRef = FirebaseDatabase.getInstance().getReference("Likes").child(username).child(placeName);
 
                 if (isLiked) {
-                    likesRef.child(placeName).setValue(true);
+                    likesRef.setValue(true);
                 } else {
-                    likesRef.child(placeName).removeValue();
+                    likesRef.removeValue();
                 }
+            }
+        });
+
+
+        DatabaseReference likesRef = FirebaseDatabase.getInstance().getReference("Likes").child(username).child(placeName);
+        likesRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    isLiked = dataSnapshot.getValue(Boolean.class);
+                    likeImage.setImageResource(isLiked ? R.drawable.like_on : R.drawable.like_off);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e(TAG, "Error reading like status", databaseError.toException());
             }
         });
 

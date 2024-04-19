@@ -1,11 +1,11 @@
 package com.example.itravel;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -42,10 +42,7 @@ public class Settings extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void Lang(View view){
-        Intent intent = new Intent(this, Language.class);
-        startActivity(intent);
-    }
+
 
     public void Log_out(View view) {
         FirebaseAuth.getInstance().signOut();
