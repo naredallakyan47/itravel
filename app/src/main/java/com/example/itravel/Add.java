@@ -118,6 +118,10 @@ public class Add extends AppCompatActivity {
         mNameField.setText("");
         mLocationField.setText("");
         mDescField.setText("");
+
+        Intent intent = new Intent(Add.this, Main.class);
+        startActivity(intent);
+        finish();
     }
 
 

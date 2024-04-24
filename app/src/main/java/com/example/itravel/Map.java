@@ -95,6 +95,25 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
     }
 
     private void addTouristPlaces() {
+
+        touristPlaces.add(new TouristPlace("Venice, Italy", new LatLng(45.438759, 12.327145), ""));
+        touristPlaces.add(new TouristPlace("Statue of Liberty, NY, USA", new LatLng(40.689247, -74.044502), ""));
+        touristPlaces.add(new TouristPlace("CHRIST THE REDEEMER (STATUE), BRAZIL", new LatLng(-22.950996196, -43.206499174), ""));
+        touristPlaces.add(new TouristPlace("Machu Picchu, Peru", new LatLng(-13.163068, -72.545128), ""));
+        touristPlaces.add(new TouristPlace("Yerevan", new LatLng(40.1772, 44.5035), "Capital of Armenia"));
+        touristPlaces.add(new TouristPlace("Gyumri", new LatLng(40.7894, 43.8478), "City with rich cultural heritage"));
+        touristPlaces.add(new TouristPlace("Vanadzor", new LatLng(40.8128, 44.4880), "Third largest city in Armenia"));
+        touristPlaces.add(new TouristPlace("Dilijan", new LatLng(40.7408, 44.8631), "Town in Tavush province known for its spa resorts and nature"));
+        touristPlaces.add(new TouristPlace("Sevan", new LatLng(40.5519, 44.9566), "Medieval monastery complex"));
+        touristPlaces.add(new TouristPlace("Tatev", new LatLng(39.375665164, 46.237332384), ""));
+        touristPlaces.add(new TouristPlace("Garni", new LatLng(40.11833286 , 44.720497118), ""));
+        touristPlaces.add(new TouristPlace("Geghard", new LatLng(40.155332712, 44.791330168), ""));
+        touristPlaces.add(new TouristPlace("Haghpat", new LatLng(41.090332972, 44.706163842), ""));
+        touristPlaces.add(new TouristPlace("Eiffel Tower, France, Paris", new LatLng(48.858093, 2.294694), ""));
+        touristPlaces.add(new TouristPlace("Musée du Louvre, Paris", new LatLng(48.860294, 2.338629), ""));
+        touristPlaces.add(new TouristPlace("Big Ben, London", new LatLng(51.510357, -0.116773), ""));
+        touristPlaces.add(new TouristPlace("Colosseum, Italy", new LatLng(41.890251, 12.492373), ""));
+        touristPlaces.add(new TouristPlace("Pisa Tower, Italy", new LatLng(43.720663784, 10.389831774), ""));
         mDatabase.child("Location").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -117,7 +136,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Обработка ошибок
+
                 Log.e("Firebase", "Failed to read value.", databaseError.toException());
             }
         });
