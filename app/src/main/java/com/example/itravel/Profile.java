@@ -1,8 +1,5 @@
 package com.example.itravel;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
@@ -21,6 +18,9 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -66,11 +66,9 @@ public class Profile extends AppCompatActivity {
                 if (username != null && !username.isEmpty()) {
                     usernameTextView.setText(username);
                 } else {
-                    // Если имя пользователя не установлено, вы можете отобразить сообщение об ошибке или что-то другое
                     usernameTextView.setText("Username not available");
                 }
             } else {
-                // Если пользователь не вошел, например, приложение запущено впервые, или нет сети, напишите здесь логику для входа пользователя.
             }
         }
     }

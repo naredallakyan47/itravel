@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,6 +32,7 @@ public class Add extends AppCompatActivity {
     private EditText mDescField;
     private ImageView mAddPhotoButton;
     private Button mAddButton;
+    private ProgressBar mProgressBar;
 
     private Uri mImageUri;
 
@@ -47,7 +49,7 @@ public class Add extends AppCompatActivity {
         mDescField = findViewById(R.id.desc);
         mAddPhotoButton = findViewById(R.id.add_photo);
         mAddButton = findViewById(R.id.add_button);
-
+        mProgressBar = findViewById(R.id.progress_bar);
 
         mAddPhotoButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,12 +74,19 @@ public class Add extends AppCompatActivity {
                     return;
                 }
 
+                if (!isValidLocationFormat(location)) {
+                    Toast.makeText(Add.this, "Please enter the location in the correct format (latitude, longitude)", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Показываем прогресс-бар и блокируем кнопку "Добавить"
+                mProgressBar.setVisibility(View.VISIBLE);
+                mAddButton.setEnabled(false);
 
                 StorageReference imageRef = mStorage.child("images").child(mImageUri.getLastPathSegment());
                 imageRef.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
                         imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
@@ -89,23 +98,33 @@ public class Add extends AppCompatActivity {
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-
                         Toast.makeText(Add.this, "Failed to upload image", Toast.LENGTH_SHORT).show();
+                        // Скрываем прогресс-бар и разблокируем кнопку "Добавить"
+                        mProgressBar.setVisibility(View.GONE);
+                        mAddButton.setEnabled(true);
                     }
                 });
             }
         });
     }
 
+    private boolean isValidLocationFormat(String location) {
+        String[] parts = location.split(",");
+        if (parts.length != 2) {
+            return false;
+        }
+        try {
+            double latitude = Double.parseDouble(parts[0].trim());
+            double longitude = Double.parseDouble(parts[1].trim());
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 
     private void saveDataToFirebase(String name, String location, String desc, String imageUrl) {
-
-
-
         mDatabase.child("Places").child(name).child("Desc").setValue(desc);
         mDatabase.child("Places").child(name).child("Image").setValue(imageUrl);
-
-
 
         DatabaseReference locationRef = mDatabase.child("Location").child(name);
 
@@ -119,20 +138,20 @@ public class Add extends AppCompatActivity {
         mLocationField.setText("");
         mDescField.setText("");
 
+        // После завершения загрузки, скрываем прогресс-бар и переходим на MainActivity
+        mProgressBar.setVisibility(View.GONE);
+        mAddButton.setEnabled(true);
         Intent intent = new Intent(Add.this, Main.class);
         startActivity(intent);
         finish();
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && data != null && data.getData() != null) {
             mImageUri = data.getData();
-
             mAddPhotoButton.setImageURI(mImageUri);
         }
     }
-
 }
