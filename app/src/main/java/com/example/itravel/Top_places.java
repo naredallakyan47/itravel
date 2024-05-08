@@ -31,7 +31,7 @@ public class Top_places extends AppCompatActivity {
     }
 
     public void Profile(View v) {
-        Intent intent = new Intent(this, Profile.class);
+        Intent intent = new Intent(this, Settings.class);
         startActivity(intent);
     }
 }

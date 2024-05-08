@@ -255,8 +255,8 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
         startActivity(intent);
     }
 
-    public void Profile(View view) {
-        Intent intent = new Intent(this, Profile.class);
+    public void Profile(View v) {
+        Intent intent = new Intent(this, Settings.class);
         startActivity(intent);
     }
 

@@ -105,7 +105,7 @@ public class PlaceFragment extends DialogFragment {
             }
         });
 
-        DatabaseReference placeRef = FirebaseDatabase.getInstance().getReference("Places").child(placeName).child("Image");
+        DatabaseReference placeRef = FirebaseDatabase.getInstance().getReference("Places").child(placeName).child("Images").child("Image1");
         placeRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

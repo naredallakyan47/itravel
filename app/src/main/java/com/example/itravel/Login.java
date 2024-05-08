@@ -43,11 +43,11 @@ public class Login extends AppCompatActivity {
         boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
         boolean isGuestMode = sharedPreferences.getBoolean("isGuestMode", false);
 
-        if (isLoggedIn && !isGuestMode) {
+        if (isLoggedIn ) {
             startActivity(new Intent(this, Main.class));
             finish();
         } else {
-            // Continue with your regular flow
+
         }
 
 
@@ -97,16 +97,7 @@ public class Login extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void Guest(View v) {
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("isGuestMode", true);
-        editor.apply();
 
-        Intent intent = new Intent(this, Main.class);
-        GuestMode = true;
-        startActivity(intent);
-    }
 }
 
 

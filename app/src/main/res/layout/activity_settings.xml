@@ -7,23 +7,33 @@
     tools:context=".Settings"
     android:background="@color/bg_color">
 
+
     <TextView
-        android:textColor="@color/black"
+        android:id="@+id/Profile"
+        android:layout_margin="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Settings"
+        android:layout_gravity="center"
+        android:text="Profile"
+        android:textColor="@color/black"
         android:textSize="40dp"
+        android:textStyle="bold"></TextView>
+    <TextView
+        android:id="@+id/username"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
         android:textStyle="bold"></TextView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:orientation="vertical"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="150dp"
         android:background="@color/white">
 
         <LinearLayout
@@ -110,8 +120,6 @@
             android:clickable="true"
             android:onClick="map"/>
 
-
-
         <ImageView
             android:layout_width="0dp"
             android:layout_height="30dp"
@@ -128,7 +136,7 @@
             android:layout_margin="10dp"
             app:srcCompat="@drawable/profile"
             android:clickable="true"
-            android:onClick="Profile"/>
+            />
     </LinearLayout>
 
 </RelativeLayout>

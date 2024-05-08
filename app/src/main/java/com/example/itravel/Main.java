@@ -97,10 +97,7 @@ public class Main extends AppCompatActivity {
         }
     }
 
-    public void onImageClick(View v) {
-        Intent intent = new Intent(this, Information.class);
-        startActivity(intent);
-    }
+
 
     public void map(View v) {
         Intent intent = new Intent(this, Map.class);
@@ -108,8 +105,7 @@ public class Main extends AppCompatActivity {
     }
 
     public void Profile(View v) {
-        Intent intent = new Intent(this, Profile.class);
-        intent.putExtra("GuestMode", Login.GuestMode);
+        Intent intent = new Intent(this, Settings.class);
         startActivity(intent);
     }
 
