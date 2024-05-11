@@ -8,99 +8,79 @@
     android:background="@color/bg_color">
 
 
-    <TextView
-        android:id="@+id/Profile"
-        android:layout_margin="15dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Profile"
-        android:textColor="@color/black"
-        android:textSize="40dp"
-        android:textStyle="bold"></TextView>
-    <TextView
-        android:id="@+id/username"
-        android:layout_marginTop="80dp"
-        android:layout_marginLeft="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        android:textStyle="bold"></TextView>
-
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:id="@+id/profile"
         android:orientation="vertical"
-        android:layout_marginTop="150dp"
-        android:background="@color/white">
+        android:background="@color/main_color"
+        android:layout_width="match_parent"
+        android:layout_height="400dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+
+        <TextView
+            android:id="@+id/Profile"
+            android:layout_gravity="center"
+            android:layout_marginTop="70dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:clickable="true"
-            android:onClick="Account"
-            >
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/profile"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"/>
+            android:text="Profile"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:textStyle="bold"></TextView>
 
 
-            <TextView
-                android:textColor="@color/black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Account"
-                android:textStyle="bold"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"/>
-
-        </LinearLayout>
-
-
-
-
-        <LinearLayout
-            android:id="@+id/log_out"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:clickable="true"
-            android:onClick="Log_out"
-            android:layout_marginTop="10dp"
-            >
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/profile"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"/>
+            android:layout_gravity="center"
+            android:layout_marginTop="150dp"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:textStyle="bold"></TextView>
 
 
-            <TextView
-                android:textColor="@color/black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Log Out"
-                android:textStyle="bold"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"/>
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginTop="15dp"
+            android:textSize="20dp"
+            android:layout_gravity="center"/>
 
-        </LinearLayout>
 
 
     </LinearLayout>
 
+
+<Button
+    android:id="@+id/log_out"
+    android:layout_width="150dp"
+    android:layout_height="80dp"
+    android:gravity="center"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="80dp"
+    android:onClick="Log_out"
+    android:textSize="25dp"
+    android:backgroundTint="@color/main_color"
+    android:text="Log Out"
+    android:layout_below="@+id/profile"/>
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:onClick="Del"
+        android:textSize="25dp"
+        android:backgroundTint="@color/main_color"
+        android:text="Delete"
+        android:layout_below="@+id/log_out"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="720dp"
+        android:layout_marginTop="700dp"
         android:background="@color/white">
 
         <ImageView

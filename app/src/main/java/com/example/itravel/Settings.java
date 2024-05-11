@@ -13,12 +13,14 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Settings extends AppCompatActivity {
     private FirebaseAuth mAuth;
+
+    private TextView emailTextView;
     private FirebaseUser currentUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
+        emailTextView = findViewById(R.id.email);
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
         TextView usernameTextView = findViewById(R.id.username);
@@ -31,10 +33,24 @@ public class Settings extends AppCompatActivity {
             }
         }
 
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (currentUser != null) {
+            String username = currentUser.getDisplayName();
+            String email = currentUser.getEmail();
+
+            if (username != null) {
+                usernameTextView.setText(username);
+            }
+            if (email != null) {
+                emailTextView.setText(email);
+            }
+        }
+
     }
 
-    public void Account(View view){
-        Intent intent = new Intent(this, Account.class);
+    public void Del(View view){
+        Intent intent = new Intent(this, Splash_screen_del.class);
         startActivity(intent);
     }
 
@@ -58,7 +74,12 @@ public class Settings extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean("isLoggedIn", false);
         editor.apply();
+        Intent intent = new Intent(this, Login.class);
+        startActivity(intent);
+        finish();
     }
+
+
 
 
 
