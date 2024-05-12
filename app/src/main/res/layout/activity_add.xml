@@ -43,30 +43,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Name"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_marginLeft="15dp"
-            android:textSize="20dp"
-            >
-        </TextView>
-        <EditText
-            android:id="@+id/name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="9dp"
-            android:hint="Name"
-            android:textColorHint="#808080"
-            android:textColor="@color/main_color"
-            android:layout_margin="10dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="50dp"
-            android:inputType="textEmailAddress"
-            android:background="@drawable/edittext_border" />
+
 
 
         <TextView
@@ -94,7 +71,41 @@
             android:inputType="textEmailAddress"
             android:background="@drawable/edittext_border" />
 
+        <Button
+            android:id="@+id/mapButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/main_color"
+            android:text="Map"
+            android:onClick="mapforloc"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="16dp" />
 
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginLeft="15dp"
+            android:textSize="20dp"
+            >
+        </TextView>
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="9dp"
+            android:hint="Name"
+            android:textColorHint="#808080"
+            android:textColor="@color/main_color"
+            android:layout_margin="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="50dp"
+            android:inputType="textEmailAddress"
+            android:background="@drawable/edittext_border" />
         <TextView
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"

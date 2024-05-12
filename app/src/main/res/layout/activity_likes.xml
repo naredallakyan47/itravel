@@ -44,11 +44,12 @@
 
 
     <LinearLayout
+        android:id="@+id/bottomLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="720dp"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:layout_alignParentBottom="true">
 
         <ImageView
             android:layout_width="0dp"

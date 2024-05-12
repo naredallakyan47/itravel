@@ -1,5 +1,7 @@
 package com.example.itravel;
 
+import static com.example.itravel.map_forloc.location;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -49,7 +51,12 @@ public class Add extends AppCompatActivity {
         mDescField = findViewById(R.id.desc);
         mAddButton = findViewById(R.id.add_button);
         mProgressBar = findViewById(R.id.progress_bar);
-
+        if (location != ""){
+            mLocationField.setText(location);
+        }
+        else {
+            mLocationField.setText("");
+        }
         mAddPhotoImageViews = new ImageView[] {
                 findViewById(R.id.add_photo1),
                 findViewById(R.id.add_photo2),
@@ -80,7 +87,7 @@ public class Add extends AppCompatActivity {
                 String location = mLocationField.getText().toString().trim();
                 String desc = mDescField.getText().toString().trim();
 
-                if (TextUtils.isEmpty(name) || TextUtils.isEmpty(location) || TextUtils.isEmpty(desc) || !areAllImagesSelected()) {
+                if (TextUtils.isEmpty(name) || TextUtils.isEmpty(location) || TextUtils.isEmpty(desc)) {
                     Toast.makeText(Add.this, "Please fill in all fields and select all images", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -102,14 +109,7 @@ public class Add extends AppCompatActivity {
         });
     }
 
-    private boolean areAllImagesSelected() {
-        for (Uri uri : mImageUris) {
-            if (uri == null) {
-                return false;
-            }
-        }
-        return true;
-    }
+
 
     private boolean isValidLocationFormat(String location) {
         String[] parts = location.split(",");
@@ -162,7 +162,7 @@ public class Add extends AppCompatActivity {
 
         resetFields();
 
-        if (index == mImageUris.length - 1) {
+        if (index == mImageUris.length - 5 || index == mImageUris.length - 4 || index == mImageUris.length - 3 || index == mImageUris.length - 2 || index == mImageUris.length - 1) {
             mProgressBar.setVisibility(View.GONE);
             mAddButton.setEnabled(true);
             Intent intent = new Intent(Add.this, Main.class);
@@ -179,6 +179,11 @@ public class Add extends AppCompatActivity {
             mAddPhotoImageViews[i].setImageResource(R.drawable.add);
             mImageUris[i] = null;
         }
+    }
+
+    public void mapforloc(View v) {
+        Intent intent = new Intent(this, map_forloc.class);
+        startActivity(intent);
     }
 
     @Override

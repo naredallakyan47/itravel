@@ -19,7 +19,7 @@
         <TextView
             android:id="@+id/Profile"
             android:layout_gravity="center"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="50dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Profile"
@@ -27,13 +27,21 @@
             android:textSize="30dp"
             android:textStyle="bold"></TextView>
 
+        <ImageView
+            android:id="@+id/profile_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/profile_img"/>
+
 
         <TextView
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="30dp"
             android:textColor="@color/white"
             android:textSize="30dp"
             android:textStyle="bold"></TextView>
@@ -77,11 +85,12 @@
         android:text="Delete"
         android:layout_below="@+id/log_out"/>
     <LinearLayout
+        android:id="@+id/bottomLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="700dp"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:layout_alignParentBottom="true">
 
         <ImageView
             android:layout_width="0dp"
