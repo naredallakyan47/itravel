@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/main"
+                android:layout_width="match_parent"
+                android:layout_height="375dp"
+                android:orientation="vertical"
+                android:background="@color/main_color">
+
+                <TextView
+                    android:id="@+id/location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Location"
+                    android:textStyle="bold"
+                    android:textSize="40dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="40dp"
+                    android:textColor="@color/black" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="20dp">
+
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="80dp"
+                        android:layout_height="90dp"
+                        app:srcCompat="@drawable/mini_map"
+                        android:layout_marginTop="20dp" />
+
+                    <TextView
+                        android:id="@+id/location_map"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="50dp"
+                        android:layout_marginTop="20dp"
+                        android:textStyle="bold"
+                        android:layout_marginStart="20dp"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/info"
+                android:background="@drawable/fon"
+                android:layout_marginTop="50dp"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="700dp">
+
+                <TextView
+                    android:id="@+id/best"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="50dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:layout_marginStart="320dp"
+                    android:layout_marginTop="400dp"
+                    android:text="7 BEST PLACES IN THE WORLD TO TRAVEL"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="More"
+                    android:onClick="More"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginStart="640dp"
+                    android:textSize="40dp"
+                    android:backgroundTint="@color/main_color"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/add"
+                android:background="@color/main_color"
+                android:layout_marginTop="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="600dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="600dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_marginTop="40dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="50dp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:text="Something is missing" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="50dp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:text="on the map?" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/add_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add"
+                    android:onClick="add"
+                    android:layout_marginTop="40dp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/main_color"
+                    android:backgroundTint="@color/white"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/bottomLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/white"
+                android:layout_alignParentBottom="true">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:layout_margin="20dp"
+                    app:srcCompat="@drawable/home" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:layout_margin="20dp"
+                    app:srcCompat="@drawable/map"
+                    android:clickable="true"
+                    android:onClick="map"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:layout_margin="20dp"
+                    app:srcCompat="@drawable/likes"
+                    android:clickable="true"
+                    android:onClick="like"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:layout_margin="20dp"
+                    app:srcCompat="@drawable/profile"
+                    android:clickable="true"
+                    android:onClick="Profile"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

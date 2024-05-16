@@ -20,9 +20,9 @@
                 android:id="@+id/top"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
+                android:textSize="60dp"
                 android:textStyle="bold"
-                android:layout_margin="20sp"
+                android:layout_margin="20dp"
                 android:text="7 best places in the world for travel "/>
 
             <LinearLayout
@@ -35,29 +35,29 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
+                android:textSize="50dp"
                 android:textStyle="bold"
-                android:layout_margin="20sp"
+                android:layout_margin="20dp"
                 android:text="1. Machu Picchu, Peru"/>
 
             <ImageView
-                android:layout_marginTop="10sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_width="700sp"
+                android:layout_height="500sp"
                 android:src="@drawable/mp3"
                 android:layout_gravity="center"></ImageView>
 
 
-            <TextView
-                android:layout_marginTop="20sp"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxWidth="300sp"
-                android:text="Located high in the Andes mountains of Peru, Machu Picchu is now believed to have been a sacred royal retreat for the Incan rulers. Built in the 15th century CE and abandoned less than 100 years later, the remote site continues to amaze with its perfectly joined, mortarless, intricate stonework. Huge multi-ton blocks of stone are perfectly joined with each other, without the use of mortar or cement."
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"/>
+                <TextView
+                    android:layout_width="889dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:maxWidth="300dp"
+                    android:text="Located high in the Andes mountains of Peru, Machu Picchu is now believed to have been a sacred royal retreat for the Incan rulers. Built in the 15th century CE and abandoned less than 100 years later, the remote site continues to amaze with its perfectly joined, mortarless, intricate stonework. Huge multi-ton blocks of stone are perfectly joined with each other, without the use of mortar or cement."
+                    android:textColor="@color/black"
+                    android:textSize="50dp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
 
@@ -74,75 +74,70 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="25sp"
+                    android:textSize="50sp"
                     android:textStyle="bold"
-                    android:layout_margin="20sp"
+                    android:layout_margin="20dp"
                     android:text="2.Rome, Italy"/>
 
                 <ImageView
-                    android:layout_marginTop="10sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="700sp"
+                    android:layout_height="500sp"
                     android:src="@drawable/colliseum3"
                     android:layout_gravity="center"></ImageView>
 
 
                 <TextView
-                    android:layout_marginTop="20sp"
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
+                    android:layout_width="893dp"
                     android:layout_height="wrap_content"
-                    android:maxWidth="300sp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:maxWidth="300dp"
                     android:text="The Eternal City is more like a giant, living museum. Visitors are immersed in and surrounded by thousands of years of history. It's a relatively compact city, and a three-day itinerary gets you to the minimum number of must-see places.
 These must-see sites for any visitor include the Colosseum and adjacent Roman Forum; the Pantheon; and Vatican City, a separate country in the middle of central Rome.
 Take some time to explore the outskirts of Rome, too. Consider a hike along a tomb-lined section of the Appian Way, the ancient Roman superhighway, and a visit to one of the aqueduct ruins outside the city."
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textSize="50sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
 
-
-
             <LinearLayout
-                android:layout_below="@+id/top"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/top"
                 android:orientation="vertical">
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    android:layout_margin="20sp"
-                    android:text="3.London, England"/>
+                    android:layout_margin="20dp"
+                    android:text="3.London, England"
+                    android:textSize="50sp"
+                    android:textStyle="bold" />
 
                 <ImageView
-                    android:layout_marginTop="10sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="200sp"
-                    android:src="@drawable/bigben2"
-                    android:layout_gravity="center"></ImageView>
+                    android:layout_width="700sp"
+                    android:layout_height="500sp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/bigben2"></ImageView>
 
 
                 <TextView
-                    android:layout_marginTop="20sp"
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
+                    android:layout_width="885dp"
                     android:layout_height="wrap_content"
-                    android:maxWidth="300sp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:maxWidth="300dp"
                     android:text="This historic English city is another destination just filled with incredible places to visit. A trip to London is an opportunity to visit iconic places like the Tower Bridge, Buckingham Palace, and the Tower of London.
 
 Take advantage of the city being a cultural center as well by seeing a West End theater show or watching a musical performance at the Royal Albert Hall. Modern London is also a city of fine dining, luxury hotels, and world-class shopping."
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textSize="50sp"
+                    android:textStyle="bold" />
             </LinearLayout>
-
-
-
 
             <LinearLayout
                 android:layout_below="@+id/top"
@@ -154,29 +149,29 @@ Take advantage of the city being a cultural center as well by seeing a West End 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="25sp"
+                    android:textSize="50sp"
                     android:textStyle="bold"
-                    android:layout_margin="20sp"
+                    android:layout_margin="20dp"
                     android:text="4. Manhattan, New York"/>
 
-                <ImageView
-                    android:layout_marginTop="10sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/lib4"
-                    android:layout_gravity="center"></ImageView>
 
+                <ImageView
+                    android:layout_width="700sp"
+                    android:layout_height="500sp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/lib4"></ImageView>
 
                 <TextView
-                    android:layout_marginTop="20sp"
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
+                    android:layout_width="889dp"
                     android:layout_height="wrap_content"
-                    android:maxWidth="300sp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:maxWidth="300dp"
                     android:text="One of the five boroughs of New York City, Manhattan is actually an island, bordered by the East River and the Hudson (and a little bit by the Harlem River). This island is a bit less than 23 square miles and is home to almost two million residents. Add in the daily influx of workers, and the island routinely holds close to four million people."
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textSize="50sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
 
@@ -190,29 +185,29 @@ Take advantage of the city being a cultural center as well by seeing a West End 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="25sp"
+                    android:textSize="50sp"
                     android:textStyle="bold"
-                    android:layout_margin="20sp"
+                    android:layout_margin="20dp"
                     android:text="5. Paris, France"/>
 
                 <ImageView
-                    android:layout_marginTop="10sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="700sp"
+                    android:layout_height="500sp"
                     android:src="@drawable/eiffel2"
                     android:layout_gravity="center"></ImageView>
 
 
                 <TextView
-                    android:layout_marginTop="20sp"
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
+                    android:layout_width="813dp"
                     android:layout_height="wrap_content"
-                    android:maxWidth="300sp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:maxWidth="300dp"
                     android:text="No visit to the French capital is complete without a trip to and a trip up its most iconic structure. The 300-meter-tall Eiffel Tower was quite simply, the tallest man-made structure in the world, from its opening in 1889 for 41 years until 1930."
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textSize="50sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
 
@@ -227,30 +222,30 @@ Take advantage of the city being a cultural center as well by seeing a West End 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="25sp"
+                    android:textSize="50sp"
                     android:textStyle="bold"
-                    android:layout_margin="20sp"
+                    android:layout_margin="20dp"
                     android:text="6. Christ the Redeemer
 statue, Mount Corcovado, Brazil"/>
 
                 <ImageView
-                    android:layout_marginTop="10sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="700sp"
+                    android:layout_height="500sp"
                     android:src="@drawable/ch2"
                     android:layout_gravity="center"></ImageView>
 
 
                 <TextView
-                    android:layout_marginTop="20sp"
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
+                    android:layout_width="853dp"
                     android:layout_height="wrap_content"
-                    android:maxWidth="300sp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:maxWidth="300dp"
                     android:text="Christ the Redeemer, colossal statue of Jesus Christ at the summit of Mount Corcovado, Rio de Janeiro, southeastern Brazil. Celebrated in traditional and popular songs, Corcovado towers over Rio de Janeiro, Brazil’s principal port city. The statue of Christ the Redeemer was completed in 1931 and stands 98 feet (30 metres) tall, its horizontally outstretched arms spanning 92 feet (28 metres)."
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textSize="50sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
 
@@ -264,29 +259,29 @@ statue, Mount Corcovado, Brazil"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="25sp"
+                    android:textSize="50sp"
                     android:textStyle="bold"
-                    android:layout_margin="20sp"
+                    android:layout_margin="20dp"
                     android:text="7. Armenia"/>
 
                 <ImageView
-                    android:layout_marginTop="10sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/yerevan3"
-                    android:layout_gravity="center"></ImageView>
+                    android:layout_width="700sp"
+                    android:layout_height="403dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/yerevan3"></ImageView>
 
 
                 <TextView
-                    android:layout_marginTop="20sp"
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
+                    android:layout_width="861dp"
                     android:layout_height="wrap_content"
-                    android:maxWidth="300sp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:maxWidth="300dp"
                     android:text="Armenia is a unitary, multi-party, democratic nation-state with an ancient cultural heritage. The first Armenian state of Urartu was established in 860 BC, and by the 6th century BC it was replaced by the Satrapy of Armenia. The Kingdom of Armenia reached its height under Tigranes the Great in the 1st century BC and in the year 301 became the first state in the world to adopt Christianity as its official religion."
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textSize="50sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
 
@@ -300,40 +295,37 @@ statue, Mount Corcovado, Brazil"/>
                 android:layout_alignParentBottom="true">
 
                 <ImageView
-                    android:layout_width="0sp"
-                    android:layout_height="30sp"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:layout_margin="10sp"
                     android:clickable="true"
                     android:onClick="home"
-
+                    android:layout_margin="10dp"
                     app:srcCompat="@drawable/homeoff" />
 
                 <ImageView
-                    android:layout_width="0sp"
-                    android:layout_height="30sp"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:layout_margin="10sp"
+                    android:layout_margin="10dp"
                     app:srcCompat="@drawable/map"
                     android:clickable="true"
                     android:onClick="map"/>
 
-
-
                 <ImageView
-                    android:layout_width="0sp"
-                    android:layout_height="30sp"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:layout_margin="10sp"
+                    android:layout_margin="10dp"
                     app:srcCompat="@drawable/likes"
                     android:clickable="true"
                     android:onClick="like"/>
 
                 <ImageView
-                    android:layout_width="0sp"
-                    android:layout_height="30sp"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:layout_margin="10sp"
+                    android:layout_margin="10dp"
                     app:srcCompat="@drawable/profile"
                     android:clickable="true"
                     android:onClick="Profile"/>

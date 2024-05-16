@@ -10,35 +10,35 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="20sp"
         android:text="Favorites"
         android:textColor="@color/white"
-        android:textSize="30sp"
-        android:layout_margin="10sp"
-        android:textStyle="bold"/>
+        android:textSize="60sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:id="@+id/main"
-        android:layout_width="360sp"
-        android:layout_height="630sp"
-        android:layout_marginTop="80sp"
-
-        android:orientation="vertical"
+        android:layout_width="732sp"
+        android:layout_height="1292sp"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:background="@drawable/rounded_corners">
+        android:layout_marginTop="200sp"
+        android:background="@drawable/rounded_corners"
+        android:orientation="vertical">
 
 
         <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp"
-            android:textColor="@color/black"
-            android:layout_marginBottom="10sp"
-            android:divider="@null"
-            android:dividerHeight="0sp"
+            android:layout_height="904dp"
+            android:layout_marginTop="20sp"
+
+            android:layout_marginBottom="20sp"
             android:background="@drawable/rounded_corners"
-            android:padding="10sp"/>
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:padding="20sp"
+            android:textColor="@color/black" />
 
     </LinearLayout>
 
@@ -53,7 +53,7 @@
 
         <ImageView
             android:layout_width="0sp"
-            android:layout_height="30sp"
+            android:layout_height="50sp"
             android:layout_weight="1"
             android:layout_margin="10sp"
             android:clickable="true"
@@ -62,7 +62,7 @@
 
         <ImageView
             android:layout_width="0sp"
-            android:layout_height="30sp"
+            android:layout_height="50sp"
             android:layout_weight="1"
             android:layout_margin="10sp"
             app:srcCompat="@drawable/map"
@@ -72,14 +72,14 @@
 
         <ImageView
             android:layout_width="0sp"
-            android:layout_height="30sp"
+            android:layout_height="50sp"
             android:layout_weight="1"
             android:layout_margin="10sp"
             app:srcCompat="@drawable/likes" />
 
         <ImageView
             android:layout_width="0sp"
-            android:layout_height="30sp"
+            android:layout_height="50sp"
             android:layout_weight="1"
             android:layout_margin="10sp"
             app:srcCompat="@drawable/profile"

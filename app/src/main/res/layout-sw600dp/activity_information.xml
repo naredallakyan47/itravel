@@ -10,10 +10,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:textSize="25sp"
+        android:textSize="50sp"
         android:gravity="center"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16sp"
+        android:layout_marginTop="30sp"
         >
 
     </TextView>
@@ -29,12 +29,12 @@
         android:orientation="horizontal">
 
         <ScrollView
-            android:layout_width="360sp"
-            android:layout_height="300sp"
+            android:layout_width="800sp"
+            android:layout_height="900sp"
             android:layout_gravity="center"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="10sp"
-            android:layout_marginTop="20sp">
+            android:layout_marginLeft="100sp"
+            android:layout_marginTop="50sp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -47,12 +47,12 @@
                 <TextView
                     android:layout_gravity="center"
                     android:id="@+id/textView"
-                    android:padding="5sp"
+                    android:padding="10sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="10sp"
                     android:textColor="@color/white"
-                    android:textSize="20dp"
+                    android:textSize="40sp"
                     android:textStyle="bold" />
 
 
@@ -75,17 +75,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20sp"
+        android:layout_marginLeft="20sp"
         android:layout_below="@+id/scroll">
 
         <Button
             android:id="@+id/play_pause_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="200sp"
+            android:layout_height="80sp"
+            android:textSize="30sp"
             android:text="Play"
-            android:layout_marginTop="10sp"
-            android:layout_marginLeft="10sp"
+            android:layout_marginTop="20sp"
+            android:layout_marginLeft="20sp"
             android:backgroundTint="@color/main_color"
             android:onClick="togglePlayPause"/>
 
@@ -101,7 +102,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20sp"
-        android:layout_marginTop="100sp">
+        android:layout_marginTop="200sp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -110,44 +111,44 @@
 
                 <ImageView
                     android:id="@+id/image"
-                    android:layout_width="300sp"
-                    android:layout_height="200sp"
+                    android:layout_width="600sp"
+                    android:layout_height="400sp"
                     android:textColor="@color/black"
                     />
 
 
                 <ImageView
                     android:id="@+id/image2"
-                    android:layout_marginLeft="10sp"
-                    android:layout_width="300sp"
-                    android:layout_height="200sp"
+                    android:layout_marginLeft="20sp"
+                    android:layout_width="600sp"
+                    android:layout_height="400sp"
                     android:textColor="@color/black"
                     />
 
 
                 <ImageView
                     android:id="@+id/image3"
-                    android:layout_marginLeft="10sp"
-                    android:layout_width="300sp"
-                    android:layout_height="200sp"
+                    android:layout_marginLeft="20sp"
+                    android:layout_width="600sp"
+                    android:layout_height="400sp"
                     android:textColor="@color/black"
                      />
 
 
                 <ImageView
                     android:id="@+id/image4"
-                    android:layout_marginLeft="10sp"
-                    android:layout_width="300sp"
-                    android:layout_height="200sp"
+                    android:layout_marginLeft="20sp"
+                    android:layout_width="600sp"
+                    android:layout_height="400sp"
                     android:textColor="@color/black"
                      />
 
 
                 <ImageView
                     android:id="@+id/image5"
-                    android:layout_marginLeft="10sp"
-                    android:layout_width="300sp"
-                    android:layout_height="200sp"
+                    android:layout_marginLeft="20sp"
+                    android:layout_width="600sp"
+                    android:layout_height="400sp"
                     android:textColor="@color/black"
                      />
             </LinearLayout>

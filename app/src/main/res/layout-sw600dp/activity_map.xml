@@ -11,76 +11,65 @@
         android:layout_height="match_parent"
         tools:context=".Map"/>
 
-
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-
-
-
-
     <LinearLayout
         android:id="@+id/bottomLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:orientation="horizontal"
         android:background="@color/white"
         android:layout_alignParentBottom="true">
 
         <ImageView
-            android:layout_width="0sp"
-            android:layout_height="30sp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_margin="10sp"
+            android:layout_margin="10dp"
             app:srcCompat="@drawable/homeoff"
             android:clickable="true"
             android:onClick="Home"/>
 
         <ImageView
-            android:layout_width="0sp"
-            android:layout_height="30sp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_margin="10sp"
+            android:layout_margin="10dp"
             app:srcCompat="@drawable/map_on"
             android:clickable="true" />
 
-
-
-
         <ImageView
-            android:layout_width="0sp"
-            android:layout_height="30sp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_margin="10sp"
+            android:layout_margin="10dp"
             android:clickable="true"
             android:onClick="like"
             app:srcCompat="@drawable/likes" />
 
         <ImageView
-            android:layout_width="0sp"
-            android:layout_height="30sp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_margin="10sp"
+            android:layout_margin="10dp"
             app:srcCompat="@drawable/profile"
             android:clickable="true"
             android:onClick="Profile"/>
     </LinearLayout>
 
-
-
     <SearchView
         android:id="@+id/searchView"
-        android:layout_width="300sp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16sp"
-        android:layout_marginTop="16sp"
-        android:layout_marginEnd="16sp"
-        android:layout_marginBottom="16sp"
+        android:layout_width="939dp"
+        android:layout_height="100sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@color/white"
-        android:padding="10sp"
+        android:padding="10dp"
         app:iconifiedByDefault="false" />
 
 </RelativeLayout>
-

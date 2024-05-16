@@ -5,8 +5,8 @@
     android:padding="16dp">
 
     <FrameLayout
-        android:layout_width="300sp"
-        android:layout_height="400sp"
+        android:layout_width="600sp"
+        android:layout_height="800sp"
         android:background="@android:color/darker_gray"
         android:gravity="center">
 
@@ -17,8 +17,8 @@
                 android:id="@+id/place_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:layout_margin="10sp"
+                android:textSize="40sp"
+                android:layout_margin="20sp"
                 android:textStyle="bold"
                 android:maxLines="2"
                 android:layout_marginBottom="16sp" />
@@ -26,19 +26,18 @@
 
         <LinearLayout
             android:id="@+id/img"
-            android:layout_width="290sp"
-            android:layout_height="220sp"
-            android:orientation="vertical"
+            android:layout_width="540sp"
+            android:layout_height="405sp"
+            android:layout_marginLeft="10sp"
             android:layout_marginTop="60sp"
-            android:layout_marginLeft="10sp">
+            android:orientation="vertical">
+
             <ImageView
                 android:id="@+id/image"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
                 android:layout_width="280sp"
                 android:layout_height="match_parent"
-                >
-            </ImageView>
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"></ImageView>
 
 
         </LinearLayout>
@@ -46,25 +45,25 @@
 
         <ImageView
             android:id="@+id/like_image"
-            android:layout_width="30sp"
-            android:layout_height="30sp"
+            android:layout_width="98sp"
+            android:layout_height="107sp"
             android:layout_below="@+id/img"
-            android:layout_marginLeft="230sp"
-            android:layout_marginTop="285sp"
+            android:layout_marginLeft="450sp"
+            android:layout_marginTop="550sp"
             android:clickable="true"
             android:src="@drawable/like_off" />
 
         <Button
-            android:layout_marginTop="330sp"
-            android:layout_marginLeft="170sp"
             android:id="@+id/info_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="More Info"
+            android:layout_width="200sp"
+            android:layout_height="80sp"
+            android:textSize="30sp"
             android:layout_below="@+id/like_image"
+            android:layout_marginLeft="340sp"
+            android:layout_marginTop="660sp"
             android:backgroundTint="@color/main_color"
-            android:onClick="info"/>
-
+            android:onClick="info"
+            android:text="More Info" />
 
 
     </FrameLayout>

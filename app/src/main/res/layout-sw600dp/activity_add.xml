@@ -20,10 +20,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Place"
-        android:textSize="40sp"
+        android:textSize="60sp"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10sp"/>
 
     <TextView
         android:id="@+id/info"
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/add"
         android:text="Information about the place"
-        android:textSize="30sp"
+        android:textSize="60sp"
         android:layout_margin="10sp"
         android:textColor="@color/black"
         android:textStyle="bold"/>
@@ -54,13 +54,14 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             android:layout_marginLeft="15sp"
-            android:textSize="20sp"
+            android:textSize="60sp"
             >
         </TextView>
         <EditText
             android:id="@+id/location"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80sp"
+            android:textSize="40sp"
             android:padding="9sp"
             android:hint="Location"
             android:textColorHint="#808080"
@@ -68,15 +69,15 @@
             android:layout_margin="10sp"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="50sp"
-            android:inputType="textEmailAddress"
             android:background="@drawable/edittext_border" />
 
         <Button
             android:id="@+id/mapButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="120sp"
+            android:layout_height="80sp"
             android:backgroundTint="@color/main_color"
             android:text="Map"
+            android:textSize="40sp"
             android:onClick="mapforloc"
             android:layout_alignParentEnd="true"
             android:layout_margin="16sp" />
@@ -90,13 +91,14 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             android:layout_marginLeft="15sp"
-            android:textSize="20sp"
+            android:textSize="40sp"
             >
         </TextView>
         <EditText
             android:id="@+id/name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80sp"
+            android:textSize="40sp"
             android:padding="9sp"
             android:hint="Name"
             android:textColorHint="#808080"
@@ -104,7 +106,6 @@
             android:layout_margin="10sp"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="50sp"
-            android:inputType="textEmailAddress"
             android:background="@drawable/edittext_border" />
         <TextView
             android:layout_marginTop="10sp"
@@ -114,13 +115,14 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             android:layout_marginLeft="15sp"
-            android:textSize="20sp"
+            android:textSize="40sp"
             >
         </TextView>
         <EditText
             android:id="@+id/desc"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80sp"
+            android:textSize="40sp"
             android:padding="9sp"
             android:hint="Description"
             android:textColorHint="#808080"
@@ -128,7 +130,6 @@
             android:layout_margin="10sp"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="50sp"
-            android:inputType="textEmailAddress"
             android:background="@drawable/edittext_border" />
         <ProgressBar
             android:id="@+id/progress_bar"
@@ -142,8 +143,8 @@
             android:layout_gravity="center"
             android:id="@+id/add_photo1"
             android:clickable="true"
-            android:layout_width="200sp"
-            android:layout_height="200sp"
+            android:layout_width="400sp"
+            android:layout_height="400sp"
             android:src="@drawable/add"/>
 
 
@@ -151,8 +152,8 @@
             android:layout_gravity="center"
             android:id="@+id/add_photo2"
             android:clickable="true"
-            android:layout_width="200sp"
-            android:layout_height="200sp"
+            android:layout_width="400sp"
+            android:layout_height="400sp"
             android:src="@drawable/add"/>
 
 
@@ -160,8 +161,8 @@
             android:layout_gravity="center"
             android:id="@+id/add_photo3"
             android:clickable="true"
-            android:layout_width="200sp"
-            android:layout_height="200sp"
+            android:layout_width="400sp"
+            android:layout_height="400sp"
             android:src="@drawable/add"/>
 
 
@@ -169,8 +170,8 @@
             android:layout_gravity="center"
             android:id="@+id/add_photo4"
             android:clickable="true"
-            android:layout_width="200sp"
-            android:layout_height="200sp"
+            android:layout_width="400sp"
+            android:layout_height="400sp"
             android:src="@drawable/add"/>
 
 
@@ -178,16 +179,17 @@
             android:layout_gravity="center"
             android:id="@+id/add_photo5"
             android:clickable="true"
-            android:layout_width="200sp"
-            android:layout_height="200sp"
+            android:layout_width="400sp"
+            android:layout_height="400sp"
             android:src="@drawable/add"/>
 
 
 
         <Button
             android:id="@+id/add_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="120sp"
+            android:textSize="30sp"
+            android:layout_height="80sp"
             android:layout_gravity="center"
             android:layout_marginTop="50sp"
             android:text="Add"

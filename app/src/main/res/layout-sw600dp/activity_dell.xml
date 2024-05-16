@@ -11,11 +11,11 @@
         android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="20sp"
         android:text="Delete account"
-        android:textSize="40sp"
         android:textColor="@color/black"
-        android:layout_margin="10sp"
-        android:textStyle="bold"/>
+        android:textSize="60sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_below="@+id/text"
@@ -29,7 +29,7 @@
             android:text="Your account will be deleted permanently"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="40sp"
             android:layout_margin="10sp"/>
 
 
@@ -44,12 +44,12 @@
             android:onClick="delete"
             >
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="300sp"
+                android:layout_height="100sp"
                 android:text="Delete Account"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="40sp"
                 android:layout_margin="10sp"/>
 
 

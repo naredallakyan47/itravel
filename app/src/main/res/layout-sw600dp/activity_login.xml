@@ -9,47 +9,47 @@
         android:id="@+id/logo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="30sp"
         android:text="Welcome Back!"
         android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textSize="35sp"
-        android:layout_margin="16sp"
-        ></TextView>
+        android:textSize="60sp"
+        android:textStyle="bold"></TextView>
 
     <LinearLayout
         android:id="@+id/main"
-        android:layout_width="360sp"
-        android:layout_height="630sp"
-        android:layout_marginTop="80sp"
+        android:layout_width="720sp"
+        android:layout_height="1300sp"
+        android:layout_marginTop="200sp"
         android:orientation="vertical"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:background="@drawable/rounded_corners">
 
         <ImageView
-            android:layout_marginTop="30sp"
             android:id="@+id/imageView"
-            android:layout_width="172sp"
-            android:layout_height="156sp"
+            android:layout_width="241sp"
+            android:layout_height="262sp"
             android:layout_gravity="center"
+            android:layout_marginTop="60sp"
             app:srcCompat="@drawable/logo" />
 
         <TextView
-            android:layout_marginTop="10sp"
+            android:layout_marginTop="40sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="E-mail"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:layout_marginLeft="15sp"
-            android:textSize="20sp"
+            android:layout_marginLeft="20sp"
+            android:textSize="40sp"
             >
         </TextView>
         <EditText
             android:id="@+id/gmail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="9sp"
+            android:layout_height="80sp"
+            android:textSize="30sp"
+            android:padding="18sp"
             android:hint="E-mail"
             android:textColorHint="#808080"
             android:textColor="@color/main_color"
@@ -62,17 +62,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Password"
+            android:layout_marginTop="20sp"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:layout_marginLeft="15sp"
-            android:textSize="20sp"
+            android:layout_marginLeft="20sp"
+            android:textSize="40sp"
             >
         </TextView>
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="9sp"
+            android:layout_height="80sp"
+            android:textSize="30sp"
+            android:padding="18sp"
             android:hint="Password"
             android:textColorHint="#808080"
             android:textColor="#008FA0"
@@ -90,8 +92,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="230sp"
+                android:layout_marginLeft="450sp"
                 android:textStyle="bold"
+                android:textSize="30sp"
                 android:textColor="@color/black"
                 android:text="Forgot Password?"
                 android:clickable="true"
@@ -106,7 +109,7 @@
             android:id="@+id/error"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10sp"
+            android:layout_marginLeft="10dp"
             android:textStyle="bold"
             android:textColor="@color/red"
             android:clickable="true"
@@ -115,10 +118,11 @@
         </TextView>
         <Button
             android:id="@+id/SignUp"
-            android:layout_width="330sp"
-            android:layout_height="59sp"
+            android:layout_width="600sp"
+            android:layout_height="80sp"
             android:layout_gravity="center"
-            android:layout_marginTop="10sp"
+            android:textSize="40sp"
+            android:layout_marginTop="20sp"
             android:backgroundTint="@color/main_color"
             android:onClick="signIn"
             android:text="Sign In"
@@ -128,15 +132,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30sp"
             android:text="Don’t have an Account?"
             android:textColor="@color/black"
+            android:textSize="30sp"
             android:layout_gravity="center"
             ></TextView>
 
         <Button
-            android:layout_width="330sp"
-            android:layout_height="59sp"
+            android:layout_width="600sp"
+            android:layout_height="80sp"
             android:layout_gravity="center"
+            android:textSize="40sp"
+            android:layout_marginTop="20sp"
             android:backgroundTint="@color/main_color"
             android:onClick="Register"
             android:text="Create Account"

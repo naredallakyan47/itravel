@@ -8,82 +8,67 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16sp"
-        android:layout_marginTop="16sp"
-        android:layout_marginEnd="16sp"
-        android:layout_marginBottom="16sp"
+        android:layout_margin="20sp"
         android:text="Reset password"
         android:gravity="center"
         android:textColor="@color/white"
-        android:textSize="35sp"
+        android:textSize="60sp"
         android:textStyle="bold"></TextView>
 
     <LinearLayout
         android:id="@+id/main"
-        android:layout_width="360sp"
-        android:layout_height="630sp"
-        android:layout_marginTop="80sp"
+        android:layout_width="720sp"
+        android:layout_height="1260sp"
+        android:layout_marginTop="150sp"
         android:orientation="vertical"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:background="@drawable/rounded_corners">
 
         <TextView
-            android:layout_marginTop="30sp"
+            android:layout_marginTop="60sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Enter your e-mail"
             android:textStyle="bold"
             android:layout_marginLeft="15sp"
-            android:textSize="20sp"
+            android:textSize="40sp"
             >
         </TextView>
         <TextView
-            android:layout_marginTop="30sp"
+            android:layout_marginTop="60sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="E-mail"
             android:textStyle="bold"
             android:layout_marginLeft="15sp"
-            android:textSize="20sp"
+            android:textSize="30sp"
             >
         </TextView>
         <EditText
             android:id="@+id/gmail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="9sp"
+            android:layout_height="80sp"
+            android:padding="18sp"
             android:hint="E-mail"
+            android:textSize="30sp"
             android:textColorHint="#808080"
             android:textColor="@color/main_color"
-            android:layout_margin="10sp"
+            android:layout_margin="20sp"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="50sp"
+            android:layout_marginBottom="100sp"
             android:inputType="textEmailAddress"
             android:background="@drawable/edittext_border" />
 
 
 
-
-
-
-        <LinearLayout
-
-            android:id="@+id/checkbox"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-
-        </LinearLayout>
-
         <Button
             android:id="@+id/SignUp"
-            android:layout_width="330sp"
-            android:layout_height="59sp"
+            android:layout_width="500sp"
+            android:layout_height="70sp"
             android:layout_gravity="center"
-            android:layout_marginTop="100sp"
+            android:textSize="30sp"
+            android:layout_marginTop="100dp"
             android:backgroundTint="@color/main_color"
             android:onClick="sendVerificationCodeToEmail"
             android:text="Reset"

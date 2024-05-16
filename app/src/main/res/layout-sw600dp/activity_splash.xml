@@ -6,12 +6,12 @@
 
     <ImageView
         android:id="@+id/logoImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/logo"
+        android:layout_width="368dp"
+        android:layout_height="412dp"
         android:layout_centerInParent="true"
+        android:animateLayoutChanges="true"
         android:scaleType="centerCrop"
-        android:animateLayoutChanges="true" />
+        android:src="@drawable/logo" />
 
     <TextView
         android:id="@+id/textView"
@@ -21,10 +21,10 @@
         android:textColor="@android:color/black"
         android:textSize="30sp"
         android:layout_below="@+id/logoImageView"
-        android:layout_marginTop="20sp"
+        android:layout_marginTop="20dp"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="32sp"
+        android:layout_marginBottom="32dp"
         android:visibility="invisible" />
 
 </RelativeLayout>
