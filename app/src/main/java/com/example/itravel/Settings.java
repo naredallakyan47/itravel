@@ -1,5 +1,7 @@
 package com.example.itravel;
 
+import static com.example.itravel.Login.GuestMode;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,6 +38,7 @@ public class Settings extends AppCompatActivity {
     private FirebaseUser currentUser;
     private TextView emailTextView;
     private ImageView profileImageView;
+    private Button deleteButton;
     private static final int PICK_IMAGE_REQUEST = 1;
 
     @Override
@@ -47,6 +51,7 @@ public class Settings extends AppCompatActivity {
 
         emailTextView = findViewById(R.id.email);
         profileImageView = findViewById(R.id.profile_img);
+        deleteButton = findViewById(R.id.delete);
 
         profileImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,12 +61,15 @@ public class Settings extends AppCompatActivity {
         });
 
         TextView usernameTextView = findViewById(R.id.username);
+        if (GuestMode) {
+            deleteButton.setVisibility(View.GONE);
+        }
+
         if (currentUser != null) {
             String username = currentUser.getDisplayName();
             if (username != null && !username.isEmpty()) {
                 usernameTextView.setText(username);
 
-                // Проверяем, есть ли у пользователя фотография в базе данных
                 DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("users").child(username);
                 userRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -69,7 +77,6 @@ public class Settings extends AppCompatActivity {
                         if (dataSnapshot.exists() && dataSnapshot.hasChild("img")) {
                             String imgUri = dataSnapshot.child("img").getValue(String.class);
                             if (imgUri != null && !imgUri.isEmpty()) {
-                                // Загружаем и устанавливаем фотографию
                                 loadAndSetProfileImage(imgUri);
                             }
                         }
@@ -77,15 +84,13 @@ public class Settings extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-                        // Обработка ошибки при чтении данных из базы данных
+
                     }
                 });
             } else {
                 usernameTextView.setText("Username not available");
             }
-        }
 
-        if (currentUser != null) {
             String email = currentUser.getEmail();
             if (email != null) {
                 emailTextView.setText(email);
@@ -127,24 +132,19 @@ public class Settings extends AppCompatActivity {
     }
 
     private void loadAndSetProfileImage(String imgUri) {
-        // Получаем ссылку на Firebase Storage
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
 
-        // Получаем ссылку на изображение в Firebase Storage
         StorageReference imgRef = storageRef.child(imgUri);
 
-        // Загружаем изображение и устанавливаем его в profileImageView с помощью Picasso
         imgRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                // Используем Picasso для загрузки изображения по URI и установки его в profileImageView
                 Picasso.get().load(uri).into(profileImageView);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                // Обработка ошибки загрузки изображения
             }
         });
     }
@@ -164,7 +164,7 @@ public class Settings extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void like(View view){
+    public void like(View view) {
         Intent intent = new Intent(this, Likes.class);
         startActivity(intent);
     }

@@ -117,6 +117,7 @@
 
         </TextView>
         <Button
+            android:textColor="@color/white"
             android:id="@+id/SignUp"
             android:layout_width="600sp"
             android:layout_height="80sp"
@@ -140,6 +141,7 @@
             ></TextView>
 
         <Button
+            android:textColor="@color/white"
             android:layout_width="600sp"
             android:layout_height="80sp"
             android:layout_gravity="center"
@@ -148,6 +150,19 @@
             android:backgroundTint="@color/main_color"
             android:onClick="Register"
             android:text="Create Account"
+            android:textStyle="bold"></Button>
+
+        <Button
+            android:textColor="@color/white"
+            android:id="@+id/guestButton"
+            android:layout_width="600sp"
+            android:layout_height="80sp"
+            android:layout_gravity="center"
+            android:textSize="40sp"
+            android:layout_marginTop="20sp"
+            android:backgroundTint="@color/main_color"
+            android:onClick="guestMode"
+            android:text="Guest mode"
             android:textStyle="bold"></Button>
 
 

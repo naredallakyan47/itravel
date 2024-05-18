@@ -123,6 +123,7 @@
             android:layout_marginLeft="15sp"/>
 
         <EditText
+
             android:id="@+id/rpassword"
             android:layout_width="match_parent"
             android:layout_height="80sp"
@@ -146,6 +147,7 @@
             android:visibility="invisible"/>
 
         <Button
+            android:textColor="@color/white"
             android:layout_width="330sp"
             android:layout_height="80sp"
             android:layout_gravity="center"

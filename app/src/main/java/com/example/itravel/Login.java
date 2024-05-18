@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,8 +26,10 @@ public class Login extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
 
     EditText emailEditText;
+    EditText usernameEditText;
     TextView error;
     EditText passwordEditText;
+    Button guestButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,23 +41,27 @@ public class Login extends AppCompatActivity {
         emailEditText = findViewById(R.id.gmail);
         passwordEditText = findViewById(R.id.password);
         error = findViewById(R.id.error);
+        guestButton = findViewById(R.id.guestButton);
 
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
-        boolean isGuestMode = sharedPreferences.getBoolean("isGuestMode", false);
 
-        if (isLoggedIn ) {
+        if (isLoggedIn) {
             startActivity(new Intent(this, Main.class));
             finish();
-        } else {
-
         }
-
 
         Intent intent = getIntent();
         if (intent != null) {
             Login.GuestMode = intent.getBooleanExtra("GuestMode", false);
         }
+
+        guestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                guestMode(v);
+            }
+        });
     }
 
     public void signIn(View v) {
@@ -86,7 +93,6 @@ public class Login extends AppCompatActivity {
                 });
     }
 
-
     public void Register(View v) {
         Intent intent = new Intent(this, Register.class);
         startActivity(intent);
@@ -97,12 +103,10 @@ public class Login extends AppCompatActivity {
         startActivity(intent);
     }
 
-
+    public void guestMode(View v) {
+        GuestMode = true;
+        emailEditText.setText("sam24023897@gmail.com");
+        passwordEditText.setText("samsung123");
+        signIn(v);
+    }
 }
-
-
-
-
-
-
-

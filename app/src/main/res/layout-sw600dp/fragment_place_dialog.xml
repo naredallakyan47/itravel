@@ -54,6 +54,7 @@
             android:src="@drawable/like_off" />
 
         <Button
+            android:textColor="@color/white"
             android:id="@+id/info_button"
             android:layout_width="200sp"
             android:layout_height="80sp"

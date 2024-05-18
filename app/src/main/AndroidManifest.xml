@@ -20,21 +20,27 @@
         android:theme="@style/Theme.ITravel"
         tools:targetApi="31">
         <activity
+            android:screenOrientation="portrait"
             android:name=".map_forloc"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".Add"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".Top_places"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".Likes"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".Splash_screen_del"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".Splash"
             android:exported="true">
             <intent-filter>
@@ -44,33 +50,36 @@
             </intent-filter>
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".Login"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".Dell"
             android:exported="false" />
+
         <activity
-            android:name=".AccountInfo"
-            android:exported="false" />
-        <activity
-            android:name=".Account"
-            android:exported="false" />
-        <activity
+            android:screenOrientation="portrait"
             android:name=".Settings"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".ForgetPass"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".Map"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".Information"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".Main"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".Register"
             android:exported="false" />
 
